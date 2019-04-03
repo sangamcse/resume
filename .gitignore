@@ -4,3 +4,5 @@
 *.synctex.*
 *.aux
 .DS_Store
+src/inp.txt
+certificate/GSoC\ 2018*
