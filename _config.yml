@@ -23,6 +23,7 @@ sass:
   sass_dir: _sass
   style: compressed
 
+analytics: UA-118439543-2
 exclude: [
   "latex",
   "README.md",
