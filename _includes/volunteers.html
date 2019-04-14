@@ -1,0 +1,14 @@
+<section class="l-Section">
+  <h2 class="l-Section-title h3">Volunteer</h2>
+  <div class="l-Section-content">
+    {% for volunteer in site.data.volunteers %}
+    <h3>{{ volunteer.title }}<i> at </i><span class="Tag">{{ volunteer.location }}</span></h3>
+    {% if volunteer.designation %}
+    <i>{{ volunteer.designation }} at <span>{{ volunteer.organisation }}</span></i>
+    <br>
+    {% endif %}
+    <em>{{ volunteer.duration }}</em>
+    <p style="text-align: justify">{{ volunteer.description }}</p>
+    {% endfor %}
+  </div>
+</section>

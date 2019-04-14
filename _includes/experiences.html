@@ -1,0 +1,14 @@
+<section class="l-Section">
+  <h2 class="l-Section-title h3">Experience</h2>
+  <div class="l-Section-content">
+    {% for experience in site.data.experiences %}
+    <h3>{{ experience.title }}<i> at </i><span class="Tag">{{ experience.location }}</span></h3>
+    {% if experience.mentor %}
+    <i>Mentored by <span>{{ experience.mentor }}</span></i>
+    <br>
+    {% endif %}
+    <em>{{ experience.duration }}</em>
+    <p style="text-align: justify">{{ experience.description }}</p>
+    {% endfor %}
+  </div>
+</section>
