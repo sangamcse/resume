@@ -1,0 +1,31 @@
+title: "Resume | Sangam Kumar (sangamcse)"
+description: "Thank you for visiting my resume webpage"
+email: "meetsangamcse@gmail.com"
+
+mainsite: "www.sangam.dev"
+
+username:
+  twitter: meetsangamcse
+  github: sangamcse
+  linkedin: sangamcse
+
+education:       true
+profile:         false
+experience:      true
+volunteer:       true
+skills:          true
+projects:        true
+awards:          true
+interests:       true
+
+markdown: kramdown
+sass:
+  sass_dir: _sass
+  style: compressed
+
+exclude: [
+  "latex",
+  "README.md",
+  "Gemfile",
+  "Gemfile.lock"
+]

@@ -1,0 +1,30 @@
+// ===Color
+$c-base: #333;
+$c-base-dark: #111;
+$c-primary: #6fd1bd;
+$c-secondary: salmon;
+$c-keyline: #ddd;
+$c-bg: #fff;
+$c-link: $c-base;
+$c-heading: $c-base-dark;
+
+// ===Base
+// Type
+$enable-fontSmoothing: true;
+$b-fontSize: 1.6rem;
+$b-fontFamily: Lato, Helvetica, Arial, sans-serif;
+$b-fontWeight: normal;
+$b-letterSpacing: 0.008em;
+$b-lineHeight: 1.5;
+// Animation
+$b-animType: ease-in-out; 
+$b-animSpeed: 0.2s;
+$b-shadowSize: 4px;
+
+// ===Navbar
+$Navbar-color: #fff;
+$Navbar-bg: #111;
+$Navbar-itemLineHeight: 4rem;
+
+// ===Footer
+$Footer-gap: unitSize(2);

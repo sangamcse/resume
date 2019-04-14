@@ -1,0 +1,14 @@
+# Volunteers
+- title: Student Developer
+  location: Google Summer of Code 2018
+  designation: Software Developer
+  organisation: <a class="u-link" href="https://www.coala.io" target="_blank">coala.io</a>
+  duration: Apr, 2018 - Aug, 2018
+  description: Software Developer at coala.io Apr, 2018 - Aug, 2018 Worked on the enhancement of automated tests of <a class="u-link" target="_blank" href="https://github.com/coala/coala">coala</a>, an open-source language independent code analysis tool, written in Python, and base class of <a class="u-link" target="_blank" href="https://github.com/coala/coala-bears">coala-bears</a> and its tests. <a class="u-link" target="_blank" href="https://github.com/coala/cEPs/blob/master/cEP-0027.md">Code Enhancement Proposal</a> can be found in <a class="u-link" target="_blank" href="https://github.com/coala/cEPs">coala/cEPs</a> repository. Also, created 2 bears(static analysis tools) for Ruby and 1 bear for Crystal by wrapping Brakeman, Fasterer and Ameba respectively.
+
+- title: Student Developer
+  location: Kharagpur Winter of Code 2017
+  designation: Software Developer
+  organisation: <a class="u-link" href="https://www.coala.io" target="_blank">coala.io</a>
+  duration: Apr, 2018 - Aug, 2018
+  description: Updated html-linter from version 0.3.0 to 0.4.0 of <a class="u-link" target="_blank" href="https://github.com/coala/coala-bears/pull/2148/commits/631ed37f7322fae7b9d7e16616f8c4009b9adb7e">HTMLLintBear</a> and fixed <a class="u-link" target="_blank" href="https://github.com/coala/coala-bears/blob/master/bears/python/PyLintBear.py">PyLintBear</a> which was breaking on Python 3.5.0.

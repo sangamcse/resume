@@ -1,0 +1,22 @@
+# Experiences
+- title: Software Developer Intern
+  location: HackerRank, Bangalore
+  mentor: <a class="u-link" href="https://www.hackerrank.com/about-us/our-team/" target="_blank">Harishankaran Karunanidni</a>, CTO & Co-Founder
+  duration: Jan, 2019 - Present
+  description: Closely worked on payment automation using Stripe API to generate billing receipts for the payer and send it to billing email. Added a function to check browser’s compatibility for statuscheck page. Migrated contests’ pages from Backbone code to ReactJS e.g, contest projecteuler. Created a comment box for HackerRank’s Sourcing platform which appears to the recruiters for the candidate who attempts a recruiting test. Main stacks used are RoR and ReactJS.
+
+- title: Winter Research Intern
+  location: Applied Cognitive Science Lab, IIT Mandi
+  mentor: <a class="u-link" href="https://faculty.iitmandi.ac.in/~varun/" target="_blank">Dr. Varun Dutt</a>, SCEE and SHSS, IIT Mandi
+  duration: Nov, 2017 - Jan, 2018
+  description: Developed a solution to fetch sensors data deployed under soil and save it to the database for the Low Cost Early Warning Solution for Landslide using Arduino and 12 geological sensors. The sensors are used to collect the data values of an amount of rainfall, soil moisture, and angle variations. The data collected from the sensor triplets placed in different locations are sent to the cloud server via GSM. Created a solution to predict landslide by using z-score of total collected soil movements data and send alert to people, using SMS-PP (Short Message Service, Point-to-Point) and SMS-CB (Short Message Service, Cell Broadcast) to pre-warn the people in the areas of increased risk of danger.
+
+- title: Web Developer
+  location: Web Development Cell (WDC), NIT Sikkim
+  duration: Jan, 2017 - Present
+  description: Worked with the WDC Team to develop institute’s dynamic website. The website, deployed at <a class="u-link" href="//www.nitsikkim.ac.in" target="_blank">www.nitsikkim.ac.in</a>, uses PHP and MySQL as initial tools and Bootstrap framework for stylesheets. I lead the Image Processing Team and maintain <a class="u-link" href="https://placement.nitsikkim.ac.in" target="_blank">placement.nitsikkim.ac.in</a>.
+
+- title: Summer Trainee
+  location: Motilal Nehru National Institute of Technology
+  duration: Jun, 2017 - Jul, 2017
+  description: 200 hrs of training on Enhancing Skill for Enterprise Scale Application Development(Core Java, Advanced Java, Design patterns, frameworks & Web Design) and created a Registration System using JSP, MySQL, and Bootstrap.
