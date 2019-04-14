@@ -14,6 +14,8 @@
     \usepackage{enumitem}
     \usepackage{wrapfig}
     \usepackage{helvet}
+    \usepackage{fancyhdr}
+    \renewcommand{\headrulewidth}{0mm}
     \usepackage[colorlinks = true,
                 linkcolor = blue,
                 urlcolor  = blue,
@@ -21,6 +23,9 @@
                 anchorcolor = blue]{hyperref}
     \setlength{\textwidth}{6.5in} % Text width of the document
     \setlength{\textheight}{720pt}
+    \pagestyle{fancy}
+    \fancyhf{}
+    \fancyfoot[R]{\small{\href{https://resume.sangam.dev}{resume.sangam.dev}}}
     %----------------------------------------------------------------------------------------
     %	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS **END**
     %----------------------------------------------------------------------------------------
