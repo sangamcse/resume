@@ -1,9 +1,9 @@
 # Experiences
 - title: Software Developer Intern
   location: <a class="u-link" target="_blank" href="https://www.hackerrank.com/">HackerRank, Bangalore</a>
-  mentor: <a class="u-link" href="https://www.hackerrank.com/about-us/our-team/" target="_blank">Harishankaran Karunanidni</a>, CTO & Co-Founder
+  mentor: <a class="u-link" href="https://www.hackerrank.com/about-us/our-team/" target="_blank">Harishankaran Karunanidhi</a>, CTO & Co-Founder
   duration: Jan, 2019 - Present
-  description: Closely worked on payment automation using Stripe API to generate billing receipts for the payer and send it to billing email. Added a function to check the browser’s compatibility for <a class="u-link" target="_blank" href="https://www.hackerrank.com/statuscheck">statuscheck</a> page. Migrated contests’ pages from Backbone code to ReactJS e.g, <a class="u-link" target="_blank" href="https://www.hackerrank.com/projecteuler/">contest projecteuler</a>. Created a comment box for <a class="u-link" target="_blank" href="https://www.hackerrank.com/work">HackerRank’s Sourcing</a> platform which appears to the recruiters for the candidate who attempts a recruiting test. Created an Icon library using SVGR which transforms given SVGs to desired React Component, and added Babel config to compile the Components. Main stacks used are RoR and ReactJS.
+  description: Closely worked on payment automation using Stripe API to generate billing receipts for the payer and send it to billing email. Implemented a method to check the browser's compatibility for <a class="u-link" target="_blank" href="https://www.hackerrank.com/statuscheck">statuscheck</a> page. Migrated contests' pages from BackboneJS code to ReactJS e.g, <a class="u-link" target="_blank" href="https://www.hackerrank.com/projecteuler/">contest projecteuler</a>. Implemented a comment box for <a class="u-link" target="_blank" href="https://www.hackerrank.com/work">HackerRank’s Sourcing</a> platform which appears to the recruiters for the candidate who attempts a recruiting test. Built an UI Icon library using SVGR which transforms given SVGs to desired React's Component, and added Babel config to compile the Components. Main stacks used are RoR and ReactJS.
 
 - title: Winter Research Intern
   location: <a class="u-link" target="_blank" href="http://acslab.org">Applied Cognitive Science Lab, IIT Mandi</a>
