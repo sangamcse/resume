@@ -1,8 +1,8 @@
 # Skills
 - skill: Languages
-  proficient: [ C, Python, PHP, Java, C++ ]
-  familiar: [ Shell Script, Swift, C#, JavaScript, Ruby ]
+  proficient: [ Python, PHP, JavaScript, C, C++ ]
+  familiar: [ Shell Script, Swift, C#, Ruby, Java ]
 
 - skill: Tools/Frameworks
-  proficient: [ ReactJS, MySQL, Git, pytest, unittest, coala, LATEX, VSCode, Unix-System (Linux & MacOS) ]
-  familiar: [ Ruby on Rails, Babel, SASS, Redux, Karma, Yarn, Rspec, Django, Android, OpenGL, NodeJS, AngularJS, Docker, PyGame, NumPy, Keras, NLTK, matplotlib, PostgreSQL ]
+  proficient: [ ReactJS, Ruby on Rails, MySQL, Git, pytest, unittest, coala, LaTeX, VSCode, Unix-System (Linux & MacOS) ]
+  familiar: [ Babel, SASS, Redux, Karma, Yarn, Rspec, Django, Android, OpenGL, NodeJS, AngularJS, Docker, PyGame, NumPy, Keras, NLTK, matplotlib, PostgreSQL ]
