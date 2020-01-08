@@ -4,6 +4,8 @@ email: "meetsangamcse@gmail.com"
 
 mainsite: "www.sangam.dev"
 
+resume_pdf: "/latex/main.pdf"
+
 username:
   twitter: meetsangamcse
   github: sangamcse
@@ -24,8 +26,12 @@ sass:
   style: compressed
 
 analytics: UA-118439543-2
+
 exclude: [
-  "latex",
+  "latex/main.tex",
+  "latex/res.cls",
+  "latex/certificate/",
+  "latex/src/",
   "README.md",
   "Gemfile",
   "Gemfile.lock"
