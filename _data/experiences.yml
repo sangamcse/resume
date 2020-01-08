@@ -1,8 +1,13 @@
 # Experiences
+- title: Full Stack Developer
+  location: <a class="u-link" target="_blank" href="https://www.hackerrank.com/">HackerRank, Bangalore</a>
+  duration: July, 2019 - Present
+  description: Core member of <a class="u-link" href="https://www.hackerrank.com/products/projects" target="_blank">Projects</a> team.
+
 - title: Software Developer Intern
   location: <a class="u-link" target="_blank" href="https://www.hackerrank.com/">HackerRank, Bangalore</a>
   mentor: <a class="u-link" href="https://www.hackerrank.com/about-us/our-team/" target="_blank">Harishankaran Karunanidhi</a>, CTO & Co-Founder
-  duration: Jan, 2019 - Present
+  duration: Jan, 2019 - June, 2019
   description: Closely worked on payment automation using Stripe API to generate billing receipts for the payer and send it to billing email. Implemented a method to check the browser's compatibility for <a class="u-link" target="_blank" href="https://www.hackerrank.com/statuscheck">statuscheck</a> page. Migrated contests' pages from BackboneJS code to ReactJS e.g, <a class="u-link" target="_blank" href="https://www.hackerrank.com/projecteuler/">contest projecteuler</a>. Implemented a comment box for <a class="u-link" target="_blank" href="https://www.hackerrank.com/work">HackerRank’s Sourcing</a> platform which appears to the recruiters for the candidate who attempts a recruiting test. Built an UI Icon library using SVGR which transforms given SVGs to desired React's Component, and added Babel config to compile the Components. Main stacks used are RoR and ReactJS.
 
 - title: Winter Research Intern
@@ -13,7 +18,7 @@
 
 - title: Web Developer
   location: <a class="u-link" target="_blank" href="https://nitsikkim.ac.in/webdevelopmentcell">Web Development Cell (WDC), NIT Sikkim</a>
-  duration: Jan, 2017 - Present
+  duration: Jan, 2017 - May, 2019
   description: Worked with the WDC Team to develop institute’s dynamic website. The website, deployed at <a class="u-link" href="//www.nitsikkim.ac.in" target="_blank">www.nitsikkim.ac.in</a>, uses PHP and MySQL as initial tools and Bootstrap framework for stylesheets. I lead the Image Processing Team and maintain <a class="u-link" href="https://placement.nitsikkim.ac.in" target="_blank">placement.nitsikkim.ac.in</a>.
 
 - title: Summer Trainee
