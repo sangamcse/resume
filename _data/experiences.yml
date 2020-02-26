@@ -2,13 +2,13 @@
 - title: Full Stack Developer
   location: <a class="u-link" target="_blank" href="https://www.hackerrank.com/">HackerRank, Bangalore</a>
   duration: July, 2019 - Present
-  description: Core member of <a class="u-link" href="https://www.hackerrank.com/products/projects" target="_blank">Projects</a> team.
+  description: Developing Enterprise softwares for <a class="u-link" href="https://www.hackerrank.com/products/projects" target="_blank">Projects</a> team. Owns code base for <a class="u-link" href="https://www.hackerrank.com/products/projects#role5" target="_blank">DevOps Engineers Accessment tool</a>, built on top of AWS EC2 Instances, which is used to access candidates for DevOps Engineering role. Currently working on automated scoring for candidates.
 
 - title: Software Developer Intern
   location: <a class="u-link" target="_blank" href="https://www.hackerrank.com/">HackerRank, Bangalore</a>
   mentor: <a class="u-link" href="https://www.hackerrank.com/about-us/our-team/" target="_blank">Harishankaran Karunanidhi</a>, CTO & Co-Founder
   duration: Jan, 2019 - June, 2019
-  description: Closely worked on payment automation using Stripe API to generate billing receipts for the payer and send it to billing email. Implemented a method to check the browser's compatibility for <a class="u-link" target="_blank" href="https://www.hackerrank.com/statuscheck">statuscheck</a> page. Migrated contests' pages from BackboneJS code to ReactJS e.g, <a class="u-link" target="_blank" href="https://www.hackerrank.com/projecteuler/">contest projecteuler</a>. Implemented a comment box for <a class="u-link" target="_blank" href="https://www.hackerrank.com/work">HackerRank’s Sourcing</a> platform which appears to the recruiters for the candidate who attempts a recruiting test. Built an UI Icon library using SVGR which transforms given SVGs to desired React's Component, and added Babel config to compile the Components. Main stacks used are RoR and ReactJS.
+  description: Worked closely on the payment automation using Stripe API to generate billing receipts for the Enterprise customers and send the bills to a given billing email. Implemented a method to check the browser's compatibility for <a class="u-link" target="_blank" href="https://www.hackerrank.com/statuscheck">statuscheck</a> page. Migrated contests' pages from BackboneJS code to ReactJS e.g, <a class="u-link" target="_blank" href="https://www.hackerrank.com/projecteuler/">contest projecteuler</a>. Implemented a comment box for <a class="u-link" target="_blank" href="https://www.hackerrank.com/work">HackerRank’s Sourcing</a> platform which appears to the recruiters for the candidate who attempts a recruiting test. Built an UI Icon library using SVGR which transforms given SVGs to desired React's Component, and added Babel config to compile the Components. Main stacks used are RoR and ReactJS.
 
 - title: Winter Research Intern
   location: <a class="u-link" target="_blank" href="http://acslab.org">Applied Cognitive Science Lab, IIT Mandi</a>
@@ -16,12 +16,7 @@
   duration: Nov, 2017 - Jan, 2018
   description: Developed a solution to fetch sensors data deployed under soil and save it to the database for the <a class="u-link" target="_blank" href="http://landslidemonitoring.esy.es/">Low Cost Early Warning Solution for Landslide</a> using Arduino and 12 geological sensors. The sensors are used to collect the data values of an amount of rainfall, soil moisture, and angle variations. The data collected from the sensor triplets placed in different locations are sent to the cloud server via GSM. Created a solution to predict landslide by using z-score of total collected soil movements data and send alert to people, using SMS-PP (Short Message Service, Point-to-Point) and SMS-CB (Short Message Service, Cell Broadcast) to pre-warn the people in the areas of increased risk of danger.
 
-- title: Web Developer
-  location: <a class="u-link" target="_blank" href="https://nitsikkim.ac.in/webdevelopmentcell">Web Development Cell (WDC), NIT Sikkim</a>
-  duration: Jan, 2017 - May, 2019
-  description: Worked with the WDC Team to develop institute’s dynamic website. The website, deployed at <a class="u-link" href="//www.nitsikkim.ac.in" target="_blank">www.nitsikkim.ac.in</a>, uses PHP and MySQL as initial tools and Bootstrap framework for stylesheets. I lead the Image Processing Team and maintain <a class="u-link" href="https://placement.nitsikkim.ac.in" target="_blank">placement.nitsikkim.ac.in</a>.
-
 - title: Summer Trainee
   location: <a class="u-link" target="_blank" href="http://www.mnnit.ac.in/">Motilal Nehru National Institute of Technology</a>
   duration: Jun, 2017 - Jul, 2017
-  description: 200 hrs of training on Enhancing Skill for Enterprise Scale Application Development(Core Java, Advanced Java, Design patterns, frameworks & Web Design) and created a Registration System using JSP, MySQL, and Bootstrap.
+  description: Attended 200 hrs of training on Enhancing Skill for Enterprise Scale Application Development and built a Registration Portal for workshop registrations using JSP, MySQL, and Bootstrap.

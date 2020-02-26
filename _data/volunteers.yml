@@ -12,3 +12,8 @@
   organisation: <a class="u-link" href="https://www.coala.io" target="_blank">coala.io</a>
   duration: Apr, 2018 - Aug, 2018
   description: Updated html-linter from version 0.3.0 to 0.4.0 of <a class="u-link" target="_blank" href="https://github.com/coala/coala-bears/pull/2148/commits/631ed37f7322fae7b9d7e16616f8c4009b9adb7e">HTMLLintBear</a> and fixed <a class="u-link" target="_blank" href="https://github.com/coala/coala-bears/blob/master/bears/python/PyLintBear.py">PyLintBear</a> which was breaking on Python 3.5.0.
+
+- title: Web Developer
+  location: <a class="u-link" target="_blank" href="https://nitsikkim.ac.in/webdevelopmentcell">Web Development Cell (WDC), NIT Sikkim</a>
+  duration: Jan, 2017 - May, 2019
+  description: Worked with the WDC Team to develop institute’s dynamic website. The website, deployed at <a class="u-link" href="//www.nitsikkim.ac.in" target="_blank">www.nitsikkim.ac.in</a>, uses PHP and MySQL as initial tools and Bootstrap framework for stylesheets. I lead the Image Processing Team and maintain <a class="u-link" href="https://placement.nitsikkim.ac.in" target="_blank">placement.nitsikkim.ac.in</a>.
