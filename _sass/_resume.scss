@@ -1,18 +1,18 @@
-
-@import url('https://fonts.googleapis.com/css?family=Lato:400,700,900');
+@import url("https://fonts.googleapis.com/css?family=Lato:400,700,900");
 
 // ===================================
 // Basic
 //
 
 @at-root {
-
   html {
     font-size: 62.5%;
     box-sizing: border-box;
   }
 
-  *, *:before, *:after {
+  *,
+  *:before,
+  *:after {
     box-sizing: inherit;
   }
 
@@ -25,16 +25,13 @@
     max-width: 100%;
     height: auto;
   }
-
 }
-
 
 // ==============================
 // Utilities
 //
 
 @at-root {
-
   .u-cf {
     &:before,
     &:after {
@@ -65,18 +62,18 @@
       border-top: 1px solid $c-keyline;
     }
   }
-  
+
   .u-link {
     display: inline;
     position: relative;
-    background-image: linear-gradient(to bottom,lighten($c-primary, 10) 0,lighten($c-primary, 10) 100%);
+    background-image: linear-gradient(to bottom, lighten($c-primary, 10) 0, lighten($c-primary, 10) 100%);
     background-position: 0 100%;
     background-repeat: repeat-x;
     background-size: 2px 2px;
     border-bottom: 0;
     text-decoration: none;
     &:hover {
-      background-image: linear-gradient(to bottom,lighten($c-secondary, 10) 0,lighten($c-secondary, 10) 100%);
+      background-image: linear-gradient(to bottom, lighten($c-secondary, 10) 0, lighten($c-secondary, 10) 100%);
     }
   }
 
@@ -101,13 +98,11 @@
   }
 }
 
-
 // ==============================
 // Typography
-// 
+//
 
 @at-root {
-
   body {
     color: $c-base;
     font-size: $b-fontSize;
@@ -123,18 +118,31 @@
     }
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     color: $c-heading;
     line-height: 1.2;
     font-weight: 900;
   }
 
-  h1, h2, h3, h4, h5, h6, ul, p {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  ul,
+  p {
     margin-top: unitSize(2);
     margin-bottom: 0;
   }
 
-  h3, .h3 {
+  h3,
+  .h3 {
     font-size: 2rem;
     margin-top: unitSize(4);
   }
@@ -149,7 +157,7 @@
 
   .Title {
     @include responsive-font(8vw, 42px, 75px, 50px);
-    font-family: Lato, 'Open Sans', Helvetica, Arial;
+    font-family: Lato, "Open Sans", Helvetica, Arial;
     font-weight: 900;
     line-height: 1.1;
     margin-top: 0;
@@ -169,30 +177,27 @@
   }
 }
 
-
 // ==============================
 // Layout
 //
 
 @at-root {
-
   .l-Wrapper {
     width: 80%;
     max-width: 90rem;
     margin-left: auto;
     margin-right: auto;
   }
-  
-   @include media-breakpoint-down(sm) {
+
+  @include media-breakpoint-down(sm) {
     .l-Wrapper--reset\@sm-down {
       width: 100%;
     }
   }
 
-
-  // 
+  //
   // Header
-  // 
+  //
 
   .l-Header {
     margin-top: unitSize(8);
@@ -213,13 +218,11 @@
     }
   }
 
-
-  // 
+  //
   // Sections
-  // 
+  //
 
   @at-root {
-
     .l-Section {
       margin-top: unitSize(8);
       + .l-Section {
@@ -271,7 +274,6 @@
     }
   }
 
-
   //
   // Footer
   //
@@ -298,16 +300,13 @@
       padding-right: $Footer-gap / 2;
     }
   }
-
 }
-
 
 // ==============================
 // Navbar
-// 
+//
 
 @at-root {
-
   .Navbar {
     color: $Navbar-color;
     font-size: 1rem;
@@ -353,10 +352,9 @@
   }
 }
 
-
 // ==============================
 // Tags
-// 
+//
 
 .Tag {
   color: $c-base-dark;
@@ -391,13 +389,11 @@
   }
 }
 
-
 // ==============================
 // Print
 //
 
 @media print {
-  
   html {
     font-size: 50%;
   }
@@ -416,14 +412,15 @@
   .l-Header-col {
     margin-top: 0;
   }
-  
+
   .l-Footer,
   .l-Section {
     margin-top: unitSize(4);
   }
-  
-  h3, .h3, 
-  .l-Section-title, 
+
+  h3,
+  .h3,
+  .l-Section-title,
   .l-Section-content {
     margin-top: unitSize(2);
   }
@@ -502,7 +499,8 @@
     page-break-after: avoid;
     color: red;
   }
-
 }
 
-@page { margin: 2.2cm 2.2cm 1.8cm; }
+@page {
+  margin: 2.2cm 2.2cm 1.8cm;
+}

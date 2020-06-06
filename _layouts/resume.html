@@ -3,56 +3,38 @@ layout: default
 ---
 
 <article class="l-Wrapper">
-  {% include title.html %}
-
-  {% if site.profile %}
+  {% include title.html %} {% if site.profile %}
   <!-- begin Education -->
   {% include profile.html %}
   <!-- end Education -->
-  {% endif %}
-
-  {% if site.education %}
+  {% endif %} {% if site.education %}
   <!-- begin Education -->
   {% include educations.html %}
   <!-- end Education -->
-  {% endif %}
-
-  {% if site.experience %}
+  {% endif %} {% if site.experience %}
   <!-- begin Experiences -->
   {% include experiences.html %}
   <!-- end Experiences -->
-  {% endif %}
-
-  {% if site.volunteer %}
+  {% endif %} {% if site.volunteer %}
   <!-- begin Volunteers -->
   {% include volunteers.html %}
   <!-- end Volunteers -->
-  {% endif %}
-
-  {% if site.skills %}
+  {% endif %} {% if site.skills %}
   <!-- begin Skills -->
   {% include skills.html %}
   <!-- end Skills -->
-  {% endif %}
-
-  {% if site.projects %}
+  {% endif %} {% if site.projects %}
   <!-- begin Projects -->
   {% include projects.html %}
   <!-- end Projects -->
-  {% endif %}
-
-  {% if site.awards %}
+  {% endif %} {% if site.awards %}
   <!-- begin Awards -->
   {% include awards.html %}
   <!-- end Awards -->
-  {% endif %}
-
-  {% if site.interest %}
+  {% endif %} {% if site.interest %}
   <!-- begin Interests -->
   {% include interests.html %}
   <!-- end Interests -->
   {% endif %}
-
 </article>
-{% include footer.html %}
-{% include analytics.html %}
+{% include footer.html %} {% include analytics.html %}

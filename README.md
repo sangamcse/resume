@@ -19,8 +19,8 @@
 
 Feel free to inspect the code structure, and reuse what is appropriate. But please respect that the files in the following directories are Copyright Sangam Kumar. You may not reuse anything therein without my written permission:
 
-- _data/
-- _includes/
+- \_data/
+- \_includes/
 - latex/
 
 All other directories and files are Apache licensed (where applicable).
