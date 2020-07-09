@@ -1,7 +1,7 @@
 # Skills
 - skill: Languages
-  proficient: [Python, PHP, JavaScript, C/C++]
-  familiar: [Shell Script, Swift, C#, Ruby, Dart, Java]
+  proficient: [Ruby, Python, JavaScript, C/C++, Bash, PHP]
+  familiar: [Dart, Java]
 
 - skill: Tools/Frameworks
   proficient:
@@ -12,31 +12,11 @@
       Flutter,
       Git,
       AWS,
-      pytest,
-      unittest,
-      coala,
-      LaTeX,
-      VSCode,
+      GCP,
+      Docker,
       Unix-System (Linux & MacOS),
     ]
   familiar:
     [
-      Babel,
-      SASS,
-      Redux,
-      Karma,
-      Yarn,
-      Rspec,
       Django,
-      Android,
-      OpenGL,
-      NodeJS,
-      AngularJS,
-      Docker,
-      PyGame,
-      NumPy,
-      Keras,
-      NLTK,
-      matplotlib,
-      PostgreSQL,
     ]
