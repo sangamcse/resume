@@ -10,13 +10,15 @@
   duration: Jan, 2019 - June, 2019
   description: Worked closely on the payment automation using Stripe API to generate billing receipts for the Enterprise customers and send the bills to a given billing email. Implemented a method to check the browser's compatibility for <a class="u-link" target="_blank" href="https://www.hackerrank.com/statuscheck">statuscheck</a> page. Migrated contests' pages from BackboneJS code to ReactJS e.g, <a class="u-link" target="_blank" href="https://www.hackerrank.com/projecteuler/">contest projecteuler</a>. Implemented a comment box for <a class="u-link" target="_blank" href="https://www.hackerrank.com/work">HackerRank’s Sourcing</a> platform which appears to the recruiters for the candidate who attempts a recruiting test. Built an UI Icon library using SVGR which transforms given SVGs to desired React's Component, and added Babel config to compile the Components. Main stacks used are RoR and ReactJS.
 
+- title: Student Developer
+  location: Google Summer of Code 2018
+  designation: Software Developer
+  organisation: <a class="u-link" href="https://www.coala.io" target="_blank">coala.io</a>
+  duration: Apr, 2018 - Aug, 2018
+  description: Software Developer at coala.io Apr, 2018 - Aug, 2018 Worked on the enhancement of automated tests of <a class="u-link" target="_blank" href="https://github.com/coala/coala">coala</a>, an open-source language independent code analysis tool, written in Python, and base class of <a class="u-link" target="_blank" href="https://github.com/coala/coala-bears">coala-bears</a> and its tests. <a class="u-link" target="_blank" href="https://github.com/coala/cEPs/blob/master/cEP-0027.md">Code Enhancement Proposal</a> can be found in <a class="u-link" target="_blank" href="https://github.com/coala/cEPs">coala/cEPs</a> repository. Also, created 2 bears(static analysis tools) for Ruby and 1 bear for Crystal by wrapping Brakeman, Fasterer and Ameba respectively.
+
 - title: Winter Research Intern
   location: <a class="u-link" target="_blank" href="http://acslab.org">Applied Cognitive Science Lab, IIT Mandi</a>
   mentor: <a class="u-link" href="https://faculty.iitmandi.ac.in/~varun/" target="_blank">Dr. Varun Dutt</a>, SCEE and SHSS, IIT Mandi
   duration: Nov, 2017 - Jan, 2018
   description: Developed a solution to fetch sensors data deployed under soil and save it to the database for the <a class="u-link" target="_blank" href="http://landslidemonitoring.esy.es/">Low Cost Early Warning Solution for Landslide</a> using Arduino and 12 geological sensors. The sensors are used to collect the data values of an amount of rainfall, soil moisture, and angle variations. The data collected from the sensor triplets placed in different locations are sent to the cloud server via GSM. Created a solution to predict landslide by using z-score of total collected soil movements data and send alert to people, using SMS-PP (Short Message Service, Point-to-Point) and SMS-CB (Short Message Service, Cell Broadcast) to pre-warn the people in the areas of increased risk of danger.
-
-- title: Summer Trainee
-  location: <a class="u-link" target="_blank" href="http://www.mnnit.ac.in/">Motilal Nehru National Institute of Technology</a>
-  duration: Jun, 2017 - Jul, 2017
-  description: Attended 200 hrs of training on Enhancing Skill for Enterprise Scale Application Development and built a Registration Portal for workshop registrations using JSP, MySQL, and Bootstrap.
