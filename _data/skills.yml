@@ -11,6 +11,7 @@
       MySQL,
       Flutter,
       Git,
+      Kubernetes,
       AWS,
       GCP,
       Docker,
@@ -19,4 +20,6 @@
   familiar:
     [
       Django,
+      BackboneJS,
+      MongoDB,
     ]
