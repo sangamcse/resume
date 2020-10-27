@@ -1,24 +1,24 @@
-title: "Resume | Sangam Kumar (sangamcse)"
-description: "Thank you for visiting my resume webpage"
-email: "meetsangamcse@gmail.com"
+title: 'Resume | Sangam Kumar (sangamcse)'
+description: 'Thank you for visiting my resume webpage'
+email: 'meetsangamcse@gmail.com'
 
-mainsite: "www.sangam.dev"
+mainsite: 'www.sangam.dev'
 
-resume_pdf: "/latex/main.pdf"
+resume_pdf: '/latex/SANGAM_KUMAR.pdf'
 
 username:
   twitter: meetsangamcse
   github: sangamcse
   linkedin: sangamcse
 
-education:       true
-profile:         false
-experience:      true
-volunteer:       true
-skills:          true
-projects:        true
-awards:          true
-interests:       true
+education: true
+profile: false
+experience: true
+volunteer: true
+skills: true
+projects: true
+awards: true
+interests: true
 
 markdown: kramdown
 sass:
@@ -27,12 +27,13 @@ sass:
 
 analytics: UA-118439543-2
 
-exclude: [
-  "latex/main.tex",
-  "latex/res.cls",
-  "latex/certificate/",
-  "latex/src/",
-  "README.md",
-  "Gemfile",
-  "Gemfile.lock"
-]
+exclude:
+  [
+    'latex/main.tex',
+    'latex/res.cls',
+    'latex/certificate/',
+    'latex/src/',
+    'README.md',
+    'Gemfile',
+    'Gemfile.lock',
+  ]
