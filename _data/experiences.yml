@@ -12,10 +12,9 @@
 
 - title: Student Developer
   location: Google Summer of Code 2018
-  designation: Software Developer
-  organisation: <a class="u-link" href="https://www.coala.io" target="_blank">coala.io</a>
+  designation: Software Developer at <a class="u-link" href="https://www.coala.io" target="_blank">coala.io</a>
   duration: Apr, 2018 - Aug, 2018
-  description: Software Developer at coala.io Apr, 2018 - Aug, 2018 Worked on the enhancement of automated tests of <a class="u-link" target="_blank" href="https://github.com/coala/coala">coala</a>, an open-source language independent code analysis tool, written in Python, and base class of <a class="u-link" target="_blank" href="https://github.com/coala/coala-bears">coala-bears</a> and its tests. <a class="u-link" target="_blank" href="https://github.com/coala/cEPs/blob/master/cEP-0027.md">Code Enhancement Proposal</a> can be found in <a class="u-link" target="_blank" href="https://github.com/coala/cEPs">coala/cEPs</a> repository. Also, created 2 bears(static analysis tools) for Ruby and 1 bear for Crystal by wrapping Brakeman, Fasterer and Ameba respectively.
+  description: Worked on the enhancement of automated tests of <a class="u-link" target="_blank" href="https://github.com/coala/coala">coala</a>, an open-source language independent code analysis tool, written in Python, and base class of <a class="u-link" target="_blank" href="https://github.com/coala/coala-bears">coala-bears</a> and its tests. <a class="u-link" target="_blank" href="https://github.com/coala/cEPs/blob/master/cEP-0027.md">Code Enhancement Proposal</a> can be found in <a class="u-link" target="_blank" href="https://github.com/coala/cEPs">coala/cEPs</a> repository. Also, created 2 bears(static analysis tools) for Ruby and 1 bear for Crystal by wrapping Brakeman, Fasterer and Ameba respectively.
 
 - title: Winter Research Intern
   location: <a class="u-link" target="_blank" href="http://acslab.org">Applied Cognitive Science Lab, IIT Mandi</a>

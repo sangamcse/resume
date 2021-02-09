@@ -10,6 +10,10 @@
     <i>Mentored by <span>{{ experience.mentor }}</span></i>
     <br />
     {% endif %}
+    {% if experience.designation %}
+    <i><span>{{ experience.designation }}</span></i>
+    <br />
+    {% endif %}
     <em>{{ experience.duration }}</em>
     <p style="text-align: justify;">{{ experience.description }}</p>
     {% endfor %}
