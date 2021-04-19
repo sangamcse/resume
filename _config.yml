@@ -29,7 +29,7 @@ analytics: UA-118439543-2
 
 exclude:
   [
-    'latex/main.tex',
+    'latex/SANGAM_KUMAR.tex',
     'latex/res.cls',
     'latex/certificate/',
     'latex/src/',
