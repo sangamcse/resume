@@ -7,7 +7,7 @@
   location: Kharagpur Winter of Code 2017
   designation: Software Developer
   organisation: <a class="u-link" href="https://www.coala.io" target="_blank">coala.io</a>
-  duration: Apr, 2018 - Aug, 2018
+  duration: Dec, 2017 - Jan, 2018
   description: Updated html-linter from version 0.3.0 to 0.4.0 of <a class="u-link" target="_blank" href="https://github.com/coala/coala-bears/pull/2148/commits/631ed37f7322fae7b9d7e16616f8c4009b9adb7e">HTMLLintBear</a> and fixed <a class="u-link" target="_blank" href="https://github.com/coala/coala-bears/blob/master/bears/python/PyLintBear.py">PyLintBear</a> which was breaking on Python 3.5.0.
 
 - title: Summer Trainee
