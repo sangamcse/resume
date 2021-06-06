@@ -2,12 +2,12 @@
 %    for LaTeX version 2.09
 % Copyright (C) 1988,1989 by Michael DeCorte
 
-\typeout{Document Style `res' <26 Sep 89>.}
+\typeout{Document Style `resume' <26 Sep 89, Dec 07>.}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% res.sty
+% resume.sty
 %
-% \documentstyle{res}
+% \documentstyle{resume}
 %
 % Copyright (c) 1988 by Michael DeCorte
 % Permission to copy all or part of this work is granted, provided
@@ -35,13 +35,13 @@
 %   centered	the name and address are centered at the top of the
 %		page (default)
 %
-%   line	the name is the left with a horizontal line then 
+%   line	the name is the left with a horizontal line then
 %		the address to the right
 %
 %   overlapped	the section titles overlap the body text (default)
 %
 %   margin	the section titles are to the left of the body text
-%		
+%
 %   11pt	use 11 point fonts instead of 10 point fonts
 %
 %   12pt	use 12 point fonts instead of 10 point fonts
@@ -76,13 +76,13 @@
 %
 %   \section{text}
 %		This prints 'text' in the left hand margin.
-%		Its exact placement depends on what the style 
+%		Its exact placement depends on what the style
 %		options has been set to. (overlapped or margin)
 %		You should use \\ to start a new line.	If the
 %		style option is margin, the \\ is converted
 %		to a space.
 %		To use this in any of the list environments, put
-%		the \section after the \item[] but before the 
+%		the \section after the \item[] but before the
 %		text.
 %		Eg.
 %		\begin{itemize}
@@ -114,7 +114,7 @@
 %		The format will eventually be used to make several
 %		tabular environments and you are defining the number of columns
 %		and the placement of text within the columns of the tabulars.
-%		Each row is terminated by a \\.  Any number of options can 
+%		Each row is terminated by a \\.  Any number of options can
 %		be on a line, they will each be set in their own columns.
 %		Any of the options except \body may be left out.
 %
@@ -180,12 +180,12 @@
 % write docs to tell people how to use this
 
 \NeedsTeXFormat{LaTeX2e}[1995/12/01]
-\ProvidesClass{res}[2000/05/19 v1.4b Resume class]
+\ProvidesClass{resume}[2000/05/19 v1.4b Resume class]
 
 %\DeclareOption{11pt}{\renewcommand\@ptsize{1}}
 %\DeclareOption{12pt}{\renewcommand\@ptsize{2}}
 
-\PassOptionsToClass{11pt,12pt}{article}
+\PassOptionsToClass{8pt,10pt}{article}
 \LoadClassWithOptions{article}
 
 \newif\if@line
@@ -258,7 +258,7 @@
 % There are two types of headings:
 % 1) one with the name centered and the address centered or
 %    in the left and right side if there are two address
-% 2) one where the name is in the upper left corner 
+% 2) one where the name is in the upper left corner
 %    the a line accross the paper
 %    then the address all on one line in the right corner
 %    the second address will be directly below the first if defined
@@ -275,12 +275,12 @@
 % unless you really understand all of this but it is not
 % hard.  Either way, it can only be executed once
 %
-\def\sectionfont{\scshape}
+\def\sectionfont{\bf}
 \newdimen\sectionwidth
 \newskip\sectionskip
 \newdimen\resumewidth
 
-\resumewidth=6.5in
+\resumewidth=7.5in
 \sectionskip=3.5ex plus 1ex minus -.2ex % values stolen from LaTeX
 
 \def\newsectionwidth#1{%
@@ -314,7 +314,7 @@
   % this macro may be called in a tabular.  Special code must be written
   % to accomodate this.  In LaTeX, a tabular is made out of hboxes.
   % TeX never goes into horizontal mode because of this; it only
-  % gets into vertical mode and restricted horizontal mode.  Certain 
+  % gets into vertical mode and restricted horizontal mode.  Certain
   % indenting problems must be handled because of this.  They
   % are delt with at the end of this routine.
   % It is also necessary to close the hbox that was created before
@@ -359,7 +359,7 @@
       \raggedright     % you don't want this filled out to the right margin
       \sectionfont
       #1\vss	       % Go into horizontal mode; do the paragraph;
-		       % go into vertical mode; add some negative glue 
+		       % go into vertical mode; add some negative glue
 		       % to give a box of 0pt height and depth
     }%
   }%
@@ -472,8 +472,8 @@
 % makes a line of width \textwidth starting at -\hoffset
 %
 \def\fullline{		% hrules only listen to \hoffset
-  \nointerlineskip	% so I have this code	  
-  \moveleft\hoffset\vbox{\hrule width\textwidth} 
+  \nointerlineskip	% so I have this code
+  \moveleft\hoffset\vbox{\hrule width\textwidth}
   \nointerlineskip
 }
 
@@ -505,7 +505,7 @@
 %
 \def\opening{\def\@opening{}
   \begingroup
-  \leftskip=-\hoffset	     % I use leftskip to move things to the left as 
+  \leftskip=-\hoffset	     % I use leftskip to move things to the left as
   \advance\textwidth\hoffset % changing hoffset doesn't work. But this
   \hsize=\textwidth	     % doesn't really work as hboxes are rules
 			     % are unaffeted
@@ -538,7 +538,7 @@
   % \@columnwidth = \textwidth / #1
   \@columnwidth=\textwidth \divide\@columnwidth by #1
   \begin{tabular*}{\textwidth}[t]%
-	{*{#1}{@{}p{\@columnwidth}@{\extracolsep{\fill}}}}
+  {*{#1}{@{}p{\@columnwidth}@{\extracolsep{\fill}}}}
 }
 
 \def\endncolumn{\end{tabular*}}
@@ -564,7 +564,7 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % \@format{name}{justify}
-% will define \print@#1 to print it's one argument 
+% will define \print@#1 to print it's one argument
 % justified according to #2 which can be
 %	  l = left
 %	  r = right
@@ -590,7 +590,7 @@
 %  \dates{pos}
 %  \title{pos}
 %  \body	    (for the body of the position environment)
-%   where pos is 
+%   where pos is
 %     l for left
 %     r for right
 %     c for center
@@ -772,12 +772,12 @@
 % with everything in the left of its column
 
 \@secpenalty = -500
-\topmargin 0pt
+\topmargin 4pt
 \headheight 0pt
 \headsep 0pt
-\textheight 9in
+\textheight 8in
 \parindent 0pt
-\topmargin 0in
+%\topmargin 0in
 \oddsidemargin 0pt
 \evensidemargin 0pt
 \marginparwidth 0pt
@@ -785,12 +785,13 @@
 \parskip \baselineskip
 \setcounter{secnumdepth}{0}
 \def\@listI{\leftmargin\leftmargini
-\topsep 0pt 
+\topsep 0pt
 \parskip 0pt
-\partopsep 2pt plus 2pt
+\partopsep 10pt plus 2pt
 \parsep 2pt plus 2pt
 \itemsep \parsep}
-
+\pdfpagewidth 8.5in
+\pdfpageheight 11in
 \pagestyle{empty}  % don't want page numbers
 
 \begin{format}
@@ -801,3 +802,42 @@
 
 \let\section\@@section
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% @brief    LaTeX2e Resume Style Config
+% @url      http://linux.dsplabs.com.au/?p=54
+% @date     Decemebr 2007
+% @author   Kamil K Wojcicki
+% @info     This a fusion of resume template code by Chris Paciorek
+%           (url: http://www.biostat.harvard.edu/~paciorek/computingTips/Latex_template_creating_CV_.html)
+%           and res.cls class by Michael DeCorte.
+%           I have merged these for educational purposes only.
+
+\oddsidemargin -10mm
+\evensidemargin -10mm
+\textwidth=150mm
+\itemsep=0cm
+\parsep=0cm
+\topmargin 10mm
+\textheight 225mm
+
+\newenvironment{list1}{
+  \begin{list}{\ding{113}}{%
+      \setlength{\itemsep}{0in}
+      \setlength{\parsep}{0in} \setlength{\parskip}{0in}
+      \setlength{\topsep}{0in} \setlength{\partopsep}{0in}
+      \setlength{\leftmargin}{0in}}}{\end{list}}
+
+\newenvironment{list2}{
+  \begin{list}{$\bullet$}{%
+      \setlength{\itemsep}{0in}
+      \setlength{\parsep}{0in} \setlength{\parskip}{0in}
+      \setlength{\topsep}{0in} \setlength{\partopsep}{0in}
+      \setlength{\leftmargin}{0in}}}{\end{list}}
+
+%\newcommand{\mysidestyle}{\footnotesize\sc}
+\newcommand{\mysidestyle}{\small\sc}
+\newcommand{\myheadingstyle}{\sl}
+\newcommand{\mysubheadingstyle}{\sl}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
