@@ -1,0 +1,110 @@
+---
+/*
+  Before and after for the gateway. The whole argument is the shape: many arrows
+  crossing straight to providers, versus many arrows funnelled through one place that
+  can say no.
+*/
+---
+
+<svg viewBox="0 0 460 300" role="img" aria-labelledby="gw-t gw-d">
+  <title id="gw-t">LLM traffic before and after the gateway</title>
+  <desc id="gw-d">
+    Before: four product features each call model providers directly, with no shared
+    limits and no per-feature cost attribution. After: the same four features call a
+    single gateway that enforces per-tenant budget and rate limits and tags each request
+    for cost attribution, and the gateway alone talks to the providers.
+  </desc>
+
+  <defs>
+    <marker id="gw-arrow" viewBox="0 0 10 10" refX="9" refY="5"
+      markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="var(--fg-faint)" />
+    </marker>
+  </defs>
+
+  <g font-family="var(--mono)" font-size="10" fill="var(--fg)">
+    <!-- ============ BEFORE ============ -->
+    <text x="8" y="14" fill="var(--fg-muted)" letter-spacing="1">BEFORE</text>
+
+    <g stroke="var(--rule)" fill="var(--bg)">
+      <rect x="8" y="26" width="46" height="22" rx="3" />
+      <rect x="8" y="54" width="46" height="22" rx="3" />
+      <rect x="8" y="82" width="46" height="22" rx="3" />
+      <rect x="8" y="110" width="46" height="22" rx="3" />
+    </g>
+    <g text-anchor="middle" fill="var(--fg-muted)">
+      <text x="31" y="41">IDE</text>
+      <text x="31" y="69">chat</text>
+      <text x="31" y="97">RAG</text>
+      <text x="31" y="125">agent</text>
+    </g>
+
+    <!-- crossing lines: deliberately messy -->
+    <g fill="none" stroke="var(--fg-faint)" stroke-width="0.9" marker-end="url(#gw-arrow)">
+      <path d="M54 37 L150 40" />
+      <path d="M54 65 L150 72" />
+      <path d="M54 93 L150 104" />
+      <path d="M54 121 L150 72" />
+      <path d="M54 37 L150 104" />
+      <path d="M54 93 L150 40" />
+    </g>
+
+    <!-- 74 wide, not 60: "Anthropic" at 10px monospace overflows a 60-wide box. -->
+    <g stroke="var(--fg-faint)" stroke-dasharray="3 3" fill="none">
+      <rect x="152" y="28" width="74" height="24" rx="3" />
+      <rect x="152" y="60" width="74" height="24" rx="3" />
+      <rect x="152" y="92" width="74" height="24" rx="3" />
+    </g>
+    <g text-anchor="middle" fill="var(--fg-muted)">
+      <text x="189" y="44">OpenAI</text>
+      <text x="189" y="76">Anthropic</text>
+      <text x="189" y="108">Bedrock</text>
+    </g>
+
+    <text x="8" y="152" fill="var(--fg-faint)">no shared limits · spend unattributable</text>
+
+    <!-- divider -->
+    <line x1="230" y1="20" x2="230" y2="286" stroke="var(--rule)" stroke-dasharray="2 4" />
+
+    <!-- ============ AFTER ============ -->
+    <text x="248" y="14" fill="var(--accent)" letter-spacing="1">AFTER</text>
+
+    <g stroke="var(--rule)" fill="var(--bg)">
+      <rect x="248" y="26" width="46" height="22" rx="3" />
+      <rect x="248" y="54" width="46" height="22" rx="3" />
+      <rect x="248" y="82" width="46" height="22" rx="3" />
+      <rect x="248" y="110" width="46" height="22" rx="3" />
+    </g>
+    <g text-anchor="middle" fill="var(--fg-muted)">
+      <text x="271" y="41">IDE</text>
+      <text x="271" y="69">chat</text>
+      <text x="271" y="97">RAG</text>
+      <text x="271" y="125">agent</text>
+    </g>
+
+    <!-- funnel into one point -->
+    <g fill="none" stroke="var(--accent)" stroke-width="0.9" marker-end="url(#gw-arrow)">
+      <path d="M294 37 L338 74" />
+      <path d="M294 65 L338 74" />
+      <path d="M294 93 L338 82" />
+      <path d="M294 121 L338 86" />
+    </g>
+
+    <rect x="340" y="52" width="112" height="52" rx="5"
+      fill="var(--accent-wash)" stroke="var(--accent)" stroke-width="1.5" />
+    <text x="396" y="70" text-anchor="middle" font-size="11" font-weight="600">gateway</text>
+    <text x="396" y="84" text-anchor="middle" fill="var(--fg-muted)">budget · TPM</text>
+    <text x="396" y="96" text-anchor="middle" fill="var(--fg-muted)">RPM · metadata</text>
+
+    <path d="M396 104 L396 130" fill="none" stroke="var(--fg-faint)"
+      marker-end="url(#gw-arrow)" />
+
+    <g stroke="var(--fg-faint)" stroke-dasharray="3 3" fill="none">
+      <rect x="340" y="132" width="112" height="24" rx="3" />
+    </g>
+    <text x="396" y="148" text-anchor="middle" fill="var(--fg-muted)">providers</text>
+
+    <text x="248" y="180" fill="var(--accent)">one path · per-tenant caps</text>
+    <text x="248" y="194" fill="var(--accent)">cost attributable per feature</text>
+  </g>
+</svg>

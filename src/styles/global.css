@@ -1,0 +1,554 @@
+/*
+  sangam.dev — editorial-technical.
+
+  Deliberate constraints:
+  - System fonts only. No webfont request, so text paints on first frame.
+  - One accent colour, tinted with color-mix() rather than hand-picked variants.
+  - light-dark() for theming, so both schemes are defined once per token.
+  - Monospace is reserved for system names and stack tags, never body prose.
+*/
+
+:root {
+  color-scheme: light dark;
+
+  --accent: light-dark(oklch(48% 0.14 250), oklch(74% 0.13 250));
+  --bg: light-dark(oklch(99% 0.004 250), oklch(17% 0.012 250));
+  --bg-sunken: light-dark(oklch(96.5% 0.006 250), oklch(21% 0.014 250));
+  --fg: light-dark(oklch(24% 0.014 250), oklch(93% 0.008 250));
+  --fg-muted: light-dark(oklch(47% 0.012 250), oklch(70% 0.012 250));
+  --fg-faint: light-dark(oklch(62% 0.01 250), oklch(56% 0.012 250));
+  --rule: light-dark(oklch(89% 0.008 250), oklch(30% 0.014 250));
+  --accent-wash: color-mix(in oklab, var(--accent) 9%, transparent);
+
+  --mono: ui-monospace, 'SF Mono', SFMono-Regular, 'Cascadia Mono', Menlo, monospace;
+  --sans: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Inter, Roboto, sans-serif;
+
+  --measure: 68ch;
+  --gutter: clamp(1.25rem, 5vw, 4rem);
+  --step: clamp(3.5rem, 9vh, 6rem);
+}
+
+/* Explicit override wins over the OS preference in both directions. */
+:root[data-theme='light'] { color-scheme: light; }
+:root[data-theme='dark'] { color-scheme: dark; }
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--sans);
+  font-size: clamp(1rem, 0.96rem + 0.2vw, 1.0625rem);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  text-underline-offset: 0.2em;
+}
+
+h1, h2, h3 {
+  text-wrap: balance;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin: 0;
+  font-weight: 620;
+}
+
+p { margin: 0 0 1em; max-width: var(--measure); }
+p:last-child { margin-bottom: 0; }
+
+a {
+  color: inherit;
+  text-decoration-color: color-mix(in oklab, currentColor 35%, transparent);
+  text-decoration-thickness: 1px;
+
+  &:hover { text-decoration-color: currentColor; }
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* ---------- layout ---------- */
+
+.shell {
+  width: 100%;
+  max-width: 78rem;
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+
+  /* Establishes the query container every @container rule below resolves against.
+     Without this they silently never match and the whole page collapses to one column. */
+  container-type: inline-size;
+}
+
+/* Anchor targets must clear the sticky masthead, or jumping to #work hides its heading. */
+:target,
+section[id],
+.case[id] {
+  scroll-margin-top: 4.5rem;
+}
+
+.skip {
+  position: absolute;
+  inset-inline-start: -100vw;
+
+  &:focus {
+    position: fixed;
+    inset-block-start: 0.5rem;
+    inset-inline-start: 0.5rem;
+    z-index: 10;
+    padding: 0.5rem 0.75rem;
+    background: var(--bg);
+    border: 1px solid var(--accent);
+  }
+}
+
+section { padding-block: var(--step); }
+
+/* Section label: small caps monospace with a rule that fills the row. */
+.section-head {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+}
+
+.section-head h2 {
+  font-family: var(--mono);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--fg-muted);
+  white-space: nowrap;
+}
+
+.section-head::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--rule);
+}
+
+/* ---------- header ---------- */
+
+.masthead {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  background: color-mix(in oklab, var(--bg) 88%, transparent);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--rule);
+}
+
+.masthead > .shell {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: 3.5rem;
+}
+
+.wordmark {
+  font-family: var(--mono);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.masthead nav {
+  display: flex;
+  align-items: center;
+  gap: clamp(0.75rem, 2vw, 1.5rem);
+  font-size: 0.875rem;
+}
+
+.masthead nav a { color: var(--fg-muted); text-decoration: none;
+  &:hover { color: var(--fg); } }
+
+.theme-toggle {
+  display: grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  border: 1px solid var(--rule);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--fg-muted);
+  cursor: pointer;
+
+  &:hover { color: var(--fg); border-color: var(--fg-faint); }
+}
+
+/* ---------- hero ---------- */
+
+.hero { padding-block: clamp(4rem, 14vh, 9rem) var(--step); }
+
+.hero h1 {
+  font-size: clamp(2.5rem, 7.5vw, 5rem);
+  max-width: 26ch;
+  margin-bottom: 1.5rem;
+}
+
+.hero .lede {
+  font-size: clamp(1.0625rem, 1rem + 0.4vw, 1.3125rem);
+  color: var(--fg-muted);
+  max-width: 56ch;
+}
+
+.hero .eyebrow {
+  font-family: var(--mono);
+  font-size: 0.8125rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 1.5rem;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 2.5rem;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.6rem 1.1rem;
+  border: 1px solid var(--rule);
+  border-radius: 0.4rem;
+  font-size: 0.9375rem;
+  text-decoration: none;
+  transition: border-color 120ms, background 120ms;
+
+  &:hover { border-color: var(--accent); background: var(--accent-wash); }
+}
+
+.btn--primary {
+  border-color: color-mix(in oklab, var(--accent) 45%, transparent);
+  background: var(--accent-wash);
+  color: var(--accent);
+  font-weight: 550;
+}
+
+/* ---------- stats ---------- */
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
+  gap: 1px;
+  margin-top: var(--step);
+  background: var(--rule);
+  border: 1px solid var(--rule);
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+.stat {
+  padding: 1.25rem 1.5rem;
+  background: var(--bg);
+}
+
+.stat dt {
+  font-size: 0.8125rem;
+  color: var(--fg-muted);
+}
+
+.stat dd {
+  margin: 0 0 0.2rem;
+  font-family: var(--mono);
+  font-size: clamp(1.5rem, 3vw, 1.875rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.stat .note {
+  font-size: 0.75rem;
+  color: var(--fg-faint);
+}
+
+/* ---------- case studies ---------- */
+
+.case + .case {
+  margin-top: var(--step);
+  padding-top: var(--step);
+  border-top: 1px solid var(--rule);
+}
+
+.case-head { margin-bottom: 2rem; }
+
+.case-head h3 {
+  font-size: clamp(1.5rem, 3.4vw, 2.125rem);
+  margin-bottom: 0.6rem;
+}
+
+.case-head .kicker {
+  color: var(--fg-muted);
+  font-size: 1.0625rem;
+  max-width: 52ch;
+}
+
+.case-body {
+  display: grid;
+  gap: clamp(2rem, 4vw, 3.5rem);
+  grid-template-columns: 1fr;
+}
+
+/* Two columns only when the container is genuinely wide enough for both. */
+@container (min-width: 62rem) {
+  .case-body { grid-template-columns: 1.05fr 0.95fr; align-items: start; }
+}
+
+.case-section { margin-bottom: 1.75rem; }
+.case-section:last-child { margin-bottom: 0; }
+
+.case-section > h4 {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--fg-faint);
+  margin: 0 0 0.6rem;
+}
+
+.case-section ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.85rem;
+  max-width: var(--measure);
+}
+
+.case-section li {
+  padding-left: 1.15rem;
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.68em;
+    width: 0.4rem;
+    height: 1px;
+    background: var(--accent);
+  }
+}
+
+.figure {
+  padding: clamp(1rem, 3vw, 1.75rem);
+  background: var(--bg-sunken);
+  border: 1px solid var(--rule);
+  border-radius: 0.5rem;
+  margin: 0;
+  position: sticky;
+  top: 5rem;
+}
+
+/* Only pin the diagram alongside the prose when there are two columns to pin it in. */
+@container (max-width: 61.999rem) {
+  .figure { position: static; }
+}
+
+/*
+  Diagrams pan rather than shrink. Squeezed into a 375px viewport the SVG rendered at
+  301px, which put its 10-unit type at 6.5px — legible to nobody. Holding a min-width of
+  the native 460px keeps type at its intended size and lets narrow screens swipe instead.
+  overscroll-behavior stops that swipe turning into a browser back-navigation.
+*/
+.figure {
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+}
+
+.figure svg {
+  display: block;
+  width: 100%;
+  min-width: 28.75rem;
+  height: auto;
+}
+
+.figure figcaption {
+  margin-top: 1rem;
+  font-size: 0.8125rem;
+  color: var(--fg-muted);
+  text-align: center;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 1.25rem;
+  padding: 0;
+  list-style: none;
+}
+
+.tags li {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  padding: 0.2rem 0.5rem;
+  color: var(--fg-muted);
+  border: 1px solid var(--rule);
+  border-radius: 0.25rem;
+}
+
+/* ---------- also built / open source ---------- */
+
+.entries { display: grid; gap: 1px; background: var(--rule);
+  border-block: 1px solid var(--rule); }
+
+.entry {
+  padding: 1.5rem 0;
+  background: var(--bg);
+  display: grid;
+  gap: 0.5rem 2rem;
+  grid-template-columns: 1fr;
+}
+
+@container (min-width: 48rem) {
+  .entry { grid-template-columns: 15rem 1fr; }
+}
+
+.entry h3 {
+  font-size: 1.0625rem;
+  font-weight: 600;
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.entry p { font-size: 0.9375rem; color: var(--fg-muted); margin: 0; }
+
+.entry .stack {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  color: var(--fg-faint);
+  margin-top: 0.5rem;
+}
+
+/* The one independently verifiable item on the page gets visual weight. */
+.entry--featured {
+  background: var(--accent-wash);
+  padding-inline: clamp(1rem, 3vw, 1.5rem);
+  margin-inline: calc(-1 * clamp(1rem, 3vw, 1.5rem));
+}
+
+.doclink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  margin-top: 0.85rem;
+  font-family: var(--mono);
+  font-size: 0.8125rem;
+  color: var(--accent);
+  font-weight: 550;
+  text-decoration-color: color-mix(in oklab, var(--accent) 40%, transparent);
+}
+
+/* ---------- timeline ---------- */
+
+.role {
+  padding: 1.5rem 0;
+  background: var(--bg);
+  display: grid;
+  gap: 0.35rem 2rem;
+  grid-template-columns: 1fr;
+}
+
+@container (min-width: 48rem) {
+  .role { grid-template-columns: 15rem 1fr; }
+}
+
+.role .period {
+  font-family: var(--mono);
+  font-size: 0.8125rem;
+  color: var(--fg-faint);
+}
+
+.role h3 { font-size: 1.0625rem; font-weight: 600; }
+.role .org { color: var(--fg-muted); font-size: 0.9375rem; }
+.role p { font-size: 0.9375rem; color: var(--fg-muted); margin: 0.4rem 0 0; }
+
+/* ---------- skills ---------- */
+
+.skills { display: grid; gap: 1.75rem; }
+
+@container (min-width: 48rem) {
+  .skills { grid-template-columns: 15rem 1fr; gap: 1.25rem 2rem; }
+  .skills > h3 { grid-column: 1; margin: 0; }
+  .skills > ul { grid-column: 2; }
+}
+
+.skills h3 {
+  font-family: var(--mono);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--fg-muted);
+}
+
+.skills ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 0.5rem;
+  margin: 0.5rem 0 0;
+  padding: 0;
+  list-style: none;
+  font-size: 0.9375rem;
+  color: var(--fg-muted);
+}
+
+.skills li::after { content: ' ·'; color: var(--fg-faint); }
+.skills li:last-child::after { content: ''; }
+
+/* ---------- footer ---------- */
+
+footer {
+  border-top: 1px solid var(--rule);
+  padding-block: var(--step) 3rem;
+}
+
+footer .contact h2 {
+  font-size: clamp(1.75rem, 4.5vw, 2.5rem);
+  margin-bottom: 1rem;
+}
+
+footer .meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  justify-content: space-between;
+  margin-top: var(--step);
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--rule);
+  font-size: 0.8125rem;
+  color: var(--fg-faint);
+}
+
+footer .meta a { color: var(--fg-muted); }
+
+/* Machine-readable endpoints, surfaced for the humans who care. */
+footer .machine {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}

@@ -1,26 +1,76 @@
-# Resume
+# sangam.dev
 
-## Requirements
+Personal site and portfolio. Static, built with [Astro](https://astro.build).
 
-- [Homebrew](https://brew.sh/)
-- Ruby and bundler
+Live at **https://sangam.dev**.
 
-### To work with site version, Jekyll is required
+## Running it
 
-- Just install all gem packages using bundle
-  > bundle install
+```bash
+npm install
+npm run dev      # http://localhost:4321
+npm run build    # → dist/
+npm run preview  # serve the built output
+```
 
-### To work with pdf, latex is required
+`npm run build` runs `npm run pdfs` first, which copies the two résumé PDFs out of
+`latex/` into `public/latex/`. `latex/` stays the source of truth; `public/latex/` is
+generated and gitignored.
 
-- tex binary should be available, to install it, run the given command
-  > brew cask install basictex
+## Layout
 
-## Licensing
+```
+src/data/profile.ts     every fact on the site, in one place
+src/pages/index.astro   the page
+src/pages/resume.json   JSON Resume endpoint
+src/pages/llms.txt      markdown summary for language models
+src/diagrams/           hand-authored inline SVG architecture diagrams
+src/styles/global.css   all the styling
+latex/                  résumé sources (see latex/Makefile)
+```
 
-Feel free to inspect the code structure, and reuse what is appropriate. But please respect that the files in the following directories are Copyright Sangam Kumar. You may not reuse anything therein without my written permission:
+**`src/data/profile.ts` is the single source of truth.** The page, `resume.json` and
+`llms.txt` all render from it, so the human-readable and machine-readable versions cannot
+drift apart. Change a fact once.
 
-- \_data/
-- \_includes/
-- latex/
+## Machine-readable endpoints
 
-All other directories and files are Apache licensed (where applicable).
+A meaningful share of visitors are agents rather than people — AI recruiter screeners, LLM
+search, assistants asked to summarise a candidate. They are served deliberately:
+
+| Endpoint | What it is |
+|---|---|
+| `/llms.txt` | Markdown summary following the [llmstxt.org](https://llmstxt.org) convention |
+| `/resume.json` | [JSON Resume](https://jsonresume.org/schema/) schema |
+| JSON-LD in the page | `schema.org/Person`, plus a `CreativeWork` per case study |
+| `/robots.txt` | Explicitly **allows** GPTBot, ClaudeBot, PerplexityBot and friends |
+
+The `robots.txt` posture is intentional. A portfolio exists to be found.
+
+## Deployment
+
+Pushing to `master` triggers `.github/workflows/deploy.yml`, which builds and publishes to
+GitHub Pages.
+
+This needs the repository's **Settings → Pages → Source** set to **GitHub Actions**. The
+default Pages build only runs Jekyll and cannot build Astro, so the deploy step fails until
+that is switched.
+
+## Design notes
+
+- No runtime dependencies beyond Astro itself. No CSS framework, no webfonts, no analytics,
+  no external requests of any kind.
+- Theming uses CSS `light-dark()`, so both schemes are defined once per token. An explicit
+  toggle is stored in `localStorage` and applied before first paint; absent a choice, the OS
+  preference wins.
+- Layout uses container queries. `.shell` carries `container-type: inline-size` — remove it
+  and every `@container` rule silently stops matching, collapsing the page to one column.
+- Diagrams hold a `min-width` and pan on narrow screens rather than scaling down. Shrunk to
+  fit a 375px viewport their type rendered at 6.5px, which was unreadable.
+- The only client-side JavaScript is the theme toggle.
+
+## Numbers
+
+The review and PR counts come from the GitHub search API, measured per year because a
+single query caps at 1000 results and silently undercounts. Review totals include
+open-source work; roughly 273 of them predate HackerRank.

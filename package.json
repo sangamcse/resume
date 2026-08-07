@@ -1,0 +1,19 @@
+{
+  "name": "sangam-dev",
+  "type": "module",
+  "version": "1.0.0",
+  "private": true,
+  "description": "sangam.dev — portfolio site",
+  "scripts": {
+    "dev": "npm run pdfs && astro dev",
+    "build": "npm run pdfs && astro build",
+    "preview": "astro preview",
+    "check": "astro check",
+    "//": "latex/ stays the source of truth; only the built PDFs are published, so the",
+    "///": "site payload excludes the .tex sources, .cls and scanned certificates.",
+    "pdfs": "mkdir -p public/latex && cp latex/SANGAM_KUMAR_SWE.pdf latex/SANGAM_KUMAR_AI_ENGINEER.pdf public/latex/"
+  },
+  "dependencies": {
+    "astro": "^7.2.0"
+  }
+}

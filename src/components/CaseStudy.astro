@@ -1,0 +1,59 @@
+---
+import type { CaseStudy } from '../data/profile';
+import AdeSession from '../diagrams/AdeSession.astro';
+import LlmGateway from '../diagrams/LlmGateway.astro';
+import SudorankConsolidation from '../diagrams/SudorankConsolidation.astro';
+
+interface Props {
+  study: CaseStudy;
+  caption: string;
+}
+
+const { study, caption } = Astro.props;
+---
+
+<article class="case" id={study.id}>
+  <div class="case-head">
+    <h3>{study.name}</h3>
+    <p class="kicker">{study.kicker}</p>
+  </div>
+
+  <div class="case-body">
+    <div>
+      <div class="case-section">
+        <h4>The problem</h4>
+        <p>{study.problem}</p>
+      </div>
+
+      <div class="case-section">
+        <h4>What I did</h4>
+        <ul>
+          {study.approach.map((step) => <li>{step}</li>)}
+        </ul>
+      </div>
+
+      <div class="case-section">
+        <h4>Outcome</h4>
+        <p>{study.outcome}</p>
+      </div>
+    </div>
+
+    {/* tabindex + role: the figure scrolls horizontally on narrow screens, and a
+        scrollable region has to be reachable and scrollable by keyboard too. */}
+    <figure
+      class="figure"
+      tabindex="0"
+      role="group"
+      aria-label={`Architecture diagram: ${study.name}`}
+    >
+      {study.diagram === 'ade' && <AdeSession />}
+      {study.diagram === 'gateway' && <LlmGateway />}
+      {study.diagram === 'consolidation' && <SudorankConsolidation />}
+      <figcaption>{caption}</figcaption>
+
+      <ul class="tags">
+        {study.stack.map((tech) => <li>{tech}</li>)}
+      </ul>
+    </figure>
+  </div>
+</article>

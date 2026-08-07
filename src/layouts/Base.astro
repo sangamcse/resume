@@ -1,0 +1,133 @@
+---
+import '../styles/global.css';
+import { site, person, caseStudies, skills } from '../data/profile';
+
+// JSON-LD so AI screeners and search extract roles, skills and systems structurally
+// rather than inferring them from prose. Each case study is a CreativeWork the Person
+// is the author of.
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: person.name,
+  url: site.url,
+  email: `mailto:${person.email}`,
+  jobTitle: person.role,
+  description: site.description,
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Bengaluru',
+    addressCountry: 'IN',
+  },
+  worksFor: {
+    '@type': 'Organization',
+    name: 'HackerRank',
+    url: 'https://www.hackerrank.com',
+  },
+  alumniOf: {
+    '@type': 'CollegeOrUniversity',
+    name: 'National Institute of Technology, Sikkim',
+  },
+  hasOccupation: {
+    '@type': 'Occupation',
+    name: 'Software Engineer',
+    occupationalCategory: '15-1252.00',
+    skills: skills.flatMap((g) => g.items).join(', '),
+  },
+  knowsAbout: skills.flatMap((g) => g.items),
+  sameAs: [person.links.github, person.links.linkedin],
+  subjectOf: caseStudies.map((c) => ({
+    '@type': 'CreativeWork',
+    name: c.name,
+    abstract: c.kicker,
+    url: `${site.url}/#${c.id}`,
+  })),
+};
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{site.title}</title>
+    <meta name="description" content={site.description} />
+    <link rel="canonical" href={site.url} />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+
+    <meta property="og:type" content="profile" />
+    <meta property="og:title" content={site.title} />
+    <meta property="og:description" content={site.description} />
+    <meta property="og:url" content={site.url} />
+    <meta property="og:image" content={`${site.url}/og.png`} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={site.title} />
+    <meta name="twitter:description" content={site.description} />
+    <meta name="twitter:image" content={`${site.url}/og.png`} />
+
+    <!-- Machine-readable siblings of this page, discoverable rather than guessed at. -->
+    <link rel="alternate" type="application/json" href="/resume.json" title="JSON Resume" />
+    <link rel="alternate" type="text/markdown" href="/llms.txt" title="Summary for LLMs" />
+
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+
+    <!--
+      Applied before first paint so an explicit choice never flashes the other scheme.
+      Absent a stored choice, nothing is set and the OS preference wins via color-scheme.
+    -->
+    <script is:inline>
+      try {
+        const saved = localStorage.getItem('theme');
+        if (saved === 'light' || saved === 'dark') {
+          document.documentElement.dataset.theme = saved;
+        }
+      } catch {}
+    </script>
+  </head>
+
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+
+    <header class="masthead">
+      <div class="shell">
+        <a class="wordmark" href="/">Sangam Kumar</a>
+        <nav aria-label="Sections">
+          <a href="#work">Work</a>
+          <a href="#open-source">Open source</a>
+          <a href="#experience">Experience</a>
+          <a href={person.resumes[0].href}>Résumé</a>
+          <button
+            class="theme-toggle"
+            type="button"
+            id="theme-toggle"
+            aria-label="Toggle colour scheme"
+            title="Toggle colour scheme"
+          >
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2" stroke-linecap="round" aria-hidden="true">
+              <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z" />
+            </svg>
+          </button>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <slot />
+    </main>
+
+    <script is:inline>
+      // The only client-side script on the site.
+      document.getElementById('theme-toggle')?.addEventListener('click', () => {
+        const root = document.documentElement;
+        const current =
+          root.dataset.theme ??
+          (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        const next = current === 'dark' ? 'light' : 'dark';
+        root.dataset.theme = next;
+        try {
+          localStorage.setItem('theme', next);
+        } catch {}
+      });
+    </script>
+  </body>
+</html>

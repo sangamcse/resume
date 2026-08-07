@@ -1,0 +1,195 @@
+---
+import Base from '../layouts/Base.astro';
+import CaseStudy from '../components/CaseStudy.astro';
+import {
+  site,
+  person,
+  stats,
+  caseStudies,
+  alsoBuilt,
+  openSource,
+  roles,
+  skills,
+  education,
+} from '../data/profile';
+
+const captions: Record<string, string> = {
+  ade: 'The agent reaches the provider through the gateway, never directly.',
+  'llm-gateway': 'Four features, one place that can say no.',
+  consolidation: 'Two provisioning paths became one, and the other was deleted.',
+};
+
+const year = 2026;
+---
+
+<Base>
+  <!-- ---------------- hero ---------------- -->
+  <section class="hero">
+    <div class="shell">
+      <p class="eyebrow">{person.role} · {person.focus}</p>
+      <h1>{site.tagline}</h1>
+      <p class="lede">
+        Agent runtimes, LLM gateways and the workspace platform behind HackerRank's
+        technical assessments. Seven years of it, mostly Ruby, Go and Python on AWS, GCP
+        and Azure. I like the problems where correctness and cost are the same
+        conversation.
+      </p>
+
+      <div class="hero-actions">
+        <a class="btn btn--primary" href="#work">See the work</a>
+        {
+          person.resumes.map((r) => (
+            <a class="btn" href={r.href}>
+              Résumé — {r.label}
+            </a>
+          ))
+        }
+      </div>
+
+      <dl class="stats">
+        {
+          stats.map((s) => (
+            <div class="stat">
+              <dd>{s.value}</dd>
+              <dt>{s.label}</dt>
+              <div class="note">{s.note}</div>
+            </div>
+          ))
+        }
+      </dl>
+    </div>
+  </section>
+
+  <!-- ---------------- case studies ---------------- -->
+  <section id="work">
+    <div class="shell">
+      <div class="section-head"><h2>Selected systems</h2></div>
+      {caseStudies.map((study) => <CaseStudy study={study} caption={captions[study.id]} />)}
+    </div>
+  </section>
+
+  <!-- ---------------- also built ---------------- -->
+  <section id="also-built">
+    <div class="shell">
+      <div class="section-head"><h2>Also built</h2></div>
+      <div class="entries">
+        {
+          alsoBuilt.map((item) => (
+            <div class:list={['entry', item.featured && 'entry--featured']}>
+              <h3>{item.name}</h3>
+              <div>
+                <p>{item.summary}</p>
+                <div class="stack">{item.stack}</div>
+                {
+                  item.link && (
+                    <a class="doclink" href={item.link.href} target="_blank" rel="noopener">
+                      {item.link.label} <span aria-hidden="true">↗</span>
+                    </a>
+                  )
+                }
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ---------------- open source ---------------- -->
+  <section id="open-source">
+    <div class="shell">
+      <div class="section-head"><h2>Open source</h2></div>
+      <div class="entries">
+        {
+          openSource.map((item) => (
+            <div class="entry">
+              <h3>
+                <a href={item.href} target="_blank" rel="noopener">
+                  {item.name} <span aria-hidden="true">↗</span>
+                </a>
+              </h3>
+              <p>{item.summary}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ---------------- experience ---------------- -->
+  <section id="experience">
+    <div class="shell">
+      <div class="section-head"><h2>Experience</h2></div>
+      <div class="entries">
+        {
+          roles.map((role) => (
+            <div class="role">
+              <div>
+                <div class="period">{role.period}</div>
+                <div class="org">{role.location}</div>
+              </div>
+              <div>
+                <h3>{role.title}</h3>
+                <div class="org">{role.org}</div>
+                <p>{role.note}</p>
+              </div>
+            </div>
+          ))
+        }
+        <div class="role">
+          <div>
+            <div class="period">{education.period}</div>
+          </div>
+          <div>
+            <h3>{education.degree}</h3>
+            <div class="org">{education.institution}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ---------------- skills ---------------- -->
+  <section id="stack">
+    <div class="shell">
+      <div class="section-head"><h2>Stack</h2></div>
+      <div class="skills">
+        {
+          skills.map((group) => (
+            <>
+              <h3>{group.group}</h3>
+              <ul>
+                {group.items.map((item) => (
+                  <li>{item}</li>
+                ))}
+              </ul>
+            </>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ---------------- footer ---------------- -->
+  <footer>
+    <div class="shell">
+      <div class="contact">
+        <h2>Let's talk.</h2>
+        <p class="lede">{person.availability}</p>
+        <div class="hero-actions">
+          <a class="btn btn--primary" href={`mailto:${person.email}`}>{person.email}</a>
+          <a class="btn" href={person.links.linkedin} target="_blank" rel="noopener">LinkedIn ↗</a>
+          <a class="btn" href={person.links.github} target="_blank" rel="noopener">GitHub ↗</a>
+        </div>
+      </div>
+
+      <div class="meta">
+        <span>© {year} {person.name} · {person.location}</span>
+        <span class="machine">
+          <a href="/resume.json">resume.json</a>
+          <a href="/llms.txt">llms.txt</a>
+        </span>
+      </div>
+    </div>
+  </footer>
+</Base>
