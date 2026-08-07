@@ -1,0 +1,75 @@
+%-------------------------------------------------------------------------------
+% Sangam Kumar -- Senior / Lead Software Engineer variant
+% Target: Senior or Lead Software Engineer (platform, infrastructure,
+%         distributed systems)
+%
+% Build: pdflatex SANGAM_KUMAR_SWE.tex   (or `make sse`)
+%-------------------------------------------------------------------------------
+
+\input{resume-base}
+
+\begin{document}
+
+\HeaderBlock{Senior / Lead Software Engineer \textbar{} Platform, Developer Infrastructure \& AI Systems}
+
+\hrulefill
+\vspace{-5pt}
+\resumeItemListStart
+    \resumeSubItem{Senior engineer with \textbf{over 7 years} at HackerRank, working on the workspace and runtime infrastructure that runs technical assessments for enterprise customers around the world.}
+    \resumeSubItem{Comfortable owning a system through its whole life, from the design document to the rollout, and eventually to shutting the old one down cleanly. Mostly Ruby, Go and Python on AWS, GCP and Azure.}
+    \resumeSubItem{Open to relocation and remote roles across APAC and EMEA.}
+ \resumeItemListEnd
+
+\vspace{-6pt}
+\LeadershipSection
+
+\vspace{-4pt}
+%-----------EXPERIENCE-----------
+\section{EXPERIENCE}
+  \resumeSubHeadingListStart
+
+    \resumeSubheading
+      {HackerRank}{Jul 2022 -- Present}
+      {Senior Software Engineer}{Bengaluru, India}
+      \resumeItemListStart
+        \resumeItem{Led the launch of ADE, our agentic development environment, which gives a candidate an editor, a terminal and an AI agent chat in the same workspace. The change touched four repositories, so I kept it backward compatible and rolled it out in stages. Later moved ADE to its own ingress and made the IDE and ADE set up in parallel, which cut down the wait at the start of a session.}
+        \resumeItem{Our DevOps assessment product ran on its own provisioning stack, which was getting hard to scale next to everything else the team owned. Added support for it inside the shared workspace layer running on Workspace Service across AWS and GCP, moved all assessment, interview and CodePair traffic over, then wrote and carried out the RFC to retire the old one. That let us shut down \textbf{an EKS cluster, a managed Redis, 9 cron jobs and 6 background workers}, without migrating data or breaking old candidate reports.}
+        \resumeItem{Took up candidate wait time for DevOps questions as a problem on its own. Profiling the setup path showed most of it went into installing Docker, pulling heavy images like LocalStack and repeated registry logins, so I pre-baked all of that into the machine image. That brought the \textbf{220 second setup down by about 140 seconds in the US and 200 seconds in India}.}
+        \resumeItem{Designed and built the v3 public API for Projects question creation, so customers can create and update questions, look up environments and upload project zips over the API instead of the UI. Wrote the customer-facing documentation and payload-mapping specs along with it.}
+        \resumeItem{Built \texttt{environment-service} from scratch in Go, which now manages \textbf{60+ assessment environments}, covering the schema, PostgreSQL setup, Docker packaging, Helm charts, Jenkins pipelines and monitoring. Built the runtime orchestrator next to it, which brought environment onboarding down from \textbf{over 2 months to about 7 days}.}
+        \resumeItem{Fixed a long-standing set of duplicate event and transaction race failures in the workspace event pipeline, using unique jobs, distributed locks and idempotent deletes. Separately traced a provisioning slowdown that had gone on for weeks to a single NAT address quietly dropping our traffic. Added Prometheus dashboards for a 50-50 proxy rollout and built the Redash dashboards the team uses to watch workspace SLAs.}
+        \resumeItem{Built and launched Azure Cloud Skills Assessment, including a Go service that gives every candidate an isolated Azure account through Microsoft Entra ID and the Graph API, and handles credentials, MFA reset and sign out. Also worked on the GenAI assessments (Prompt Engineering, RAG and Agents) and an LLM proxy with per-team token and cost limits.}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {HackerRank}{Jan 2021 -- Jun 2022}
+      {Software Development Engineer II}{Remote}
+      \resumeItemListStart
+        \resumeItem{Scaled the DevOps assessment platform to run \textbf{1,000 servers at a time}. Added a Redis lock so warmup jobs stopped stepping on each other, and used gh-ost for MySQL schema changes so we did not need downtime.}
+        \resumeItem{Launched DevOps Assessment 2.0 with a shared interactive terminal for live interviews, after which \textbf{usage grew by 500\%}. Sent patches upstream to \texttt{ttyd} for presence tracking and keepalive, and moved session recording from \texttt{ttyrec} to \texttt{asciinema} so playback worked properly in reports.}
+        \resumeItem{Started moving DevOps assessments onto the shared workspace layer instead of their own provisioning flow, which was the groundwork that made the later cleanup possible. Also moved the terminal to xterm.js and fixed scoring for partial credit and exit codes.}
+        \resumeItem{Led the Flutter stack delivery and added assessment support for AWS, Git, Apache, Terraform and Docker. Handled the Rails 5 to Rails 6 migration for the DevOps modules and load-tested services with Locust. Helped take HackerRank's \textbf{DLI to 4.3+} and improve NPS through better Projects discovery.}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {HackerRank}{Jul 2019 -- Dec 2020}
+      {Software Development Engineer}{Bengaluru, India}
+      \resumeItemListStart
+        \resumeItem{Scaled the DevOps assessment tool to handle \textbf{900\% more concurrent candidate sessions}. Owned the EC2 provisioning path, the Packer machine images, logging and the recovery server setup.}
+        \resumeItem{Moved the tool's background workers, cron jobs and brokers from process-supervised deployments onto \textbf{Kubernetes}, as part of the wider platform migration.}
+        \resumeItem{Set up the \textbf{SLA capture and monitoring system}, with health checks on setup duration and failure rates. These became the numbers the team tracked for quality and performance.}
+        \resumeItem{Built a script execution service for workspaces, used for re-scoring and running tests, along with a scoring artifacts pipeline that carried exit codes back. Also fixed Data Science reports that used to get lost when a candidate submitted a large dataset.}
+      \resumeItemListEnd
+
+    \EarlyCareerSection
+
+  \resumeSubHeadingListEnd
+\vspace{-10pt}
+
+\AdditionalWorkSection
+
+\EducationSection
+
+\SkillsSection{AI Engineering}{LLM gateways (LiteLLM, Portkey), Anthropic \& OpenAI APIs, RAG, agentic runtimes, MCP, prompt engineering, guardrails, token and cost budgeting (TPM/RPM), LlamaIndex}
+
+\end{document}

@@ -1,0 +1,198 @@
+%-------------------------------------------------------------------------------
+% Shared base for Sangam Kumar's resume variants.
+% Author: Sangam Kumar   |   Based off of: https://github.com/sb2nov/resume
+% License: MIT
+%
+% Do not compile this file directly. It is \input by:
+%   SANGAM_KUMAR_SWE.tex           (senior / lead platform engineering track)
+%   SANGAM_KUMAR_AI_ENGINEER.tex   (AI platform engineering track)
+%
+% Requires: titlesec, enumitem  (fontawesome5 optional -- see guard below)
+% Installed here into the *user* tree, because this machine runs TeX Live 2025
+% while the default tlmgr repo has moved to 2026 (cross-release installs fail):
+%   tlmgr init-usertree
+%   tlmgr --usermode --repository \
+%     https://ftp.math.utah.edu/pub/tex/historic/systems/texlive/2025/tlnet-final \
+%     install titlesec enumitem fontawesome5
+%-------------------------------------------------------------------------------
+
+\documentclass[a4paper, 11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{titlesec}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\usepackage{multicol}
+\input{glyphtounicode}
+
+% Icons are cosmetic. Degrade gracefully so the document still builds on a
+% minimal TeX install (e.g. BasicTeX) that lacks fontawesome5.
+\IfFileExists{fontawesome5.sty}{%
+  \usepackage{fontawesome5}%
+}{%
+  \newcommand{\faPhone}{}%
+  \newcommand{\faMapPin}{}%
+  \newcommand{\faEnvelope}{}%
+  \newcommand{\faGlobeAsia}{}%
+  \newcommand{\faLinkedin}{}%
+  \newcommand{\faGithub}{}%
+}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Margins (previously supplied by fullpage, now explicit so the package is not needed)
+\setlength{\oddsidemargin}{-0.6in}
+\setlength{\evensidemargin}{-0.6in}
+\setlength{\textwidth}{7.7in}
+\setlength{\topmargin}{-0.8in}
+\setlength{\textheight}{10.4in}
+\setlength{\headheight}{0pt}
+\setlength{\headsep}{0pt}
+\setlength{\footskip}{0pt}
+\setlength{\parindent}{0pt}
+
+\urlstyle{same}
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+\setlength{\multicolsep}{-3.0pt}
+\setlength{\columnsep}{-1pt}
+
+% Section formatting
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\bfseries
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+% Ensure the generated PDF is machine-readable / ATS parsable
+\pdfgentounicode=1
+
+%-------------------------------------------------------------------------------
+% Custom commands
+%-------------------------------------------------------------------------------
+\newcommand{\resumeItem}[1]{
+  \item\small{
+    {#1 \vspace{-1pt}}
+  }
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{1.0\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & \textbf{\textit{\small #2}} \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+% LaTeX list environments permit a page break at \begin{itemize} (\@beginparpenalty
+% defaults to a low value). That is exactly where a role heading gets orphaned from
+% its own bullets, so forbid it. \@itempenalty is left alone -- breaking *between*
+% bullets is fine and necessary to fill a page.
+\makeatletter
+\@beginparpenalty=10000
+\makeatother
+
+\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
+
+\renewcommand\labelitemi{$\vcenter{\hbox{\tiny$\bullet$}}$}
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.0in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+%-------------------------------------------------------------------------------
+% Shared content blocks
+%-------------------------------------------------------------------------------
+
+% \HeaderBlock{role subtitle}
+\newcommand{\HeaderBlock}[1]{%
+\begin{center}
+    {\huge \textbf{SANGAM KUMAR}} \\
+    \vspace{3pt}
+    {\small \textit{#1}} \\
+    \vspace{4pt}
+    \small{\href{tel:+917602054727}{\raisebox{-0.03\height}\faPhone\ \underline{+91 7602054727}} ~
+    \faMapPin\ \underline{India/APAC} ~
+    \href{mailto:sangamcse.dev@gmail.com}{\raisebox{-0.3\height}\faEnvelope\  \underline{sangamcse.dev@gmail.com}} ~
+    \href{https://www.sangam.dev}{\raisebox{-0.2\height}\faGlobeAsia\ \underline{sangam.dev}} ~
+    \href{https://linkedin.com/in/sangamcse}{\raisebox{-0.2\height}\faLinkedin\ \underline{/sangamcse}} ~
+    \href{https://github.com/sangamcse}{\raisebox{-0.2\height}\faGithub\ \underline{/sangamcse}}}
+\end{center}
+\vspace{-6pt}
+}
+
+% Technical leadership -- shared verbatim across both variants.
+\newcommand{\LeadershipSection}{%
+\section{TECHNICAL LEADERSHIP}
+\vspace{2pt}
+\resumeItemListStart
+    \resumeItem{Reviewed \textbf{over 1,400 pull requests across 60+ repositories} so far, including open source, holding steady at around 150 a year since 2020. Have been a regular reviewer for 16 engineers, and am first reviewer for two on the workspace platform today.}
+    \resumeItem{Wrote \textbf{6 architecture RFCs and design documents}, covering the shutdown of legacy infrastructure, public API design, container registry migration and candidate IDE tooling.}
+    \resumeItem{Write the \textbf{RCAs for P1 and P2 customer escalations}. Part of the on-call rotation, and handle incident response and postmortems.}
+    \resumeItem{Own production releases and phased rollouts, usually \textbf{30\%, then 50\%, then 100\%} of traffic, with clear fallback and abort points agreed beforehand.}
+    \resumeItem{On the \textbf{system design interview panel} and work with the engineering manager on keeping the hiring bar consistent. Also built the agent-based triage tooling the team now uses on production issues.}
+\resumeItemListEnd
+}
+
+% Early career -- shared, compressed.
+\newcommand{\EarlyCareerSection}{%
+    \resumeSubheading
+      {HackerRank}{Jan 2019 -- Jun 2019}
+      {Software Development Engineer Intern}{Bengaluru, India}
+      \resumeItemListStart
+        \resumeItem{Moved old Backbone pages to React (contests, leaderboards, Hourrank, 101Hack) and built the shared UI icons library, which generated React components from SVG files automatically using SVGR and Gulp.}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {Google Summer of Code}{Apr 2018 -- Aug 2018}
+      {Student Developer}{Remote}
+      \resumeItemListStart
+        \resumeItem{Worked with \href{https://github.com/coala/coala}{coala.io} on their language-independent static analysis tool. Wrote three new Bears for Ruby and Crystal using Brakeman, Fasterer and Ameba, and improved pytest coverage in the core.}
+      \resumeItemListEnd
+}
+
+% Supplementary verified work that does not belong under a single role.
+\newcommand{\AdditionalWorkSection}{%
+\section{SELECTED WORK \& OPEN SOURCE}
+\vspace{2pt}
+\resumeItemListStart
+    \resumeItem{Open source: sent patches upstream to \texttt{ttyd} for terminal presence and keepalive, wrote the Ruby and Crystal Bears for \texttt{coala}, and fixed caching and memoization bugs in \texttt{rspec-tracer}.}
+    \resumeItem{Worked on language server performance in candidate IDEs. Added \texttt{clangd} so C++ gets proper completion and debugging, and benchmarked \texttt{ruff} against \texttt{pylint} to fix how slow the Python editor felt.}
+    \resumeItem{Launched Playwright as a QA assessment skill, including the runtime, the images and a flag-based rollout, along with work on the Data Science, Jupyter and full-stack environments.}
+    \resumeItem{On the security side, rotated container registry credentials across 5 repositories, cleared pending Dependabot vulnerabilities in Go and Ruby services, and added the tagging needed for compliance audits.}
+\resumeItemListEnd
+}
+
+\newcommand{\EducationSection}{%
+\section{EDUCATION}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {National Institute of Technology}{Aug 2015 -- May 2019}
+      {Bachelor of Technology in Computer Science and Engineering}{Sikkim, India}
+  \resumeSubHeadingListEnd
+}
+
+% \SkillsSection{first row label}{first row content}
+% The leading row differs per variant so the most relevant stack appears first.
+\newcommand{\SkillsSection}[2]{%
+\section{SKILLS}
+% \tabcolsep is 0in document-wide, so the label column needs an explicit gutter --
+% without it the widest label butts directly against its content.
+\begin{tabularx}{\textwidth}{@{}l@{\hspace{14pt}}X@{}}
+\textbf{#1} & #2 \\
+\textbf{Languages} & Ruby, Go, Python, TypeScript, JavaScript, C++, Java, Bash \\
+\textbf{Frameworks} & Ruby on Rails, ActiveRecord, RSpec, Gin, FastAPI, Node, React, Next.js, Flutter \\
+\textbf{Data} & PostgreSQL, MySQL, MongoDB, Redis, Elasticsearch/OpenSearch, Redshift \\
+\textbf{Infrastructure} & AWS, GCP, Azure, Microsoft Entra, Kubernetes, Docker, Terraform, Helm, Packer, Jenkins, GNU/Linux \\
+\textbf{Observability} & Grafana, Prometheus, OpenTelemetry, NewRelic, Kibana, Redash, CloudWatch \\
+\end{tabularx}
+}

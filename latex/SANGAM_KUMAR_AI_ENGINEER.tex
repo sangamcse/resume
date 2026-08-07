@@ -1,0 +1,72 @@
+%-------------------------------------------------------------------------------
+% Sangam Kumar -- AI Engineer variant
+% Target: AI Engineer / AI Platform Engineer / Applied AI Infrastructure
+%
+% Build: pdflatex SANGAM_KUMAR_AI_ENGINEER.tex   (or `make ai`)
+%-------------------------------------------------------------------------------
+
+\input{resume-base}
+
+\begin{document}
+
+\HeaderBlock{AI Platform Engineer \textbar{} Agent Runtimes, LLM Gateways \& Production AI Systems}
+
+\hrulefill
+\vspace{-5pt}
+\resumeItemListStart
+    \resumeSubItem{Engineer who builds the infrastructure AI products sit on, the \textbf{agent runtimes, LLM gateways and cost controls}, and also ships the AI features that run on top of it.}
+    \resumeSubItem{\textbf{Over 7 years} of backend and distributed systems work in Ruby, Go and Python across AWS, GCP and Azure, so the AI systems I build are ones I can also run, debug and keep within budget.}
+    \resumeSubItem{Open to relocation and remote roles across APAC and EMEA.}
+ \resumeItemListEnd
+
+\vspace{-6pt}
+\LeadershipSection
+
+\vspace{-4pt}
+%-----------EXPERIENCE-----------
+\section{EXPERIENCE}
+  \resumeSubHeadingListStart
+
+    \resumeSubheading
+      {HackerRank}{Jul 2022 -- Present}
+      {Senior Software Engineer}{Bengaluru, India}
+      \resumeItemListStart
+        \resumeItem{Led the launch of ADE, our agentic development environment, where a candidate gets an editor, a terminal and an agent chat in one workspace, with a coding agent running against the \textbf{Anthropic API} through our LLM gateway. Owned the agent server lifecycle, the ingress, \textbf{minting a fresh credential per session}, tool provisioning and versioned deployments, across four repositories.}
+        \resumeItem{Brought in \textbf{LiteLLM} as our LLM proxy and added \textbf{per-tenant budget, TPM and RPM limits} on top of it, so one team or feature could not eat into everyone else's quota. Later added \textbf{Portkey} metadata to the requests so spend could be attributed per feature, and tightened up its release pipeline. Also wrote scripts that deliberately try to exhaust a budget, to confirm the limits actually hold.}
+        \resumeItem{Designed and launched the \textbf{Prompt Engineering} question type from nothing to GA, covering the backend, question creation, the candidate experience, the checker programs and localisation. Followed it with the \textbf{RAG} and \textbf{Agent} modules built in Python with OpenAI and LlamaIndex, along with an OpenAI tool runtime and GPU-backed images.}
+        \resumeItem{Keep the AI assessments working as models move on. Upgraded the environments to newer OpenAI model versions and re-validated the RAG questions against them, since a question that scores correctly on one model does not always behave the same way on the next one.}
+        \resumeItem{Shipped the in-workspace AI assistant along with the Copilot and Continue integrations, gated to customers on the AI add-on. Wrote the RCA when the assistant turned itself on for a question type it was not meant for, and fixed the flag handling behind it.}
+        \resumeItem{Built the agent-based triage tooling the team uses now. These are reusable skills that pull workspace state and support context together, so a production escalation can be investigated from logs and telemetry without starting from scratch each time.}
+        \resumeItem{On the platform side, our DevOps product ran on its own provisioning stack that was hard to scale, so I moved it onto the shared multi-cloud Workspace Service and then retired the old one, shutting down an EKS cluster, a managed Redis, 9 cron jobs and 6 workers with no data migration. Also shipped the v3 public Projects API and built \texttt{environment-service} in Go, which manages \textbf{60+ assessment environments}.}
+        \resumeItem{Fixed duplicate event and transaction race failures in the workspace event pipeline using unique jobs and distributed locks, and traced a weeks-long provisioning slowdown to a single NAT address that was dropping traffic silently. Built the Prometheus and Redash dashboards the team uses for platform SLAs.}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {HackerRank}{Jan 2021 -- Jun 2022}
+      {Software Development Engineer II}{Remote}
+      \resumeItemListStart
+        \resumeItem{Scaled the DevOps assessment platform to run \textbf{1,000 servers at a time}. Added a Redis lock so warmup jobs stopped stepping on each other, and used gh-ost for MySQL schema changes so we did not need downtime for them.}
+        \resumeItem{Launched DevOps Assessment 2.0 with a shared interactive terminal for live interviews, after which \textbf{usage grew by 500\%}. Sent patches upstream to \texttt{ttyd} and moved session recording from \texttt{ttyrec} to \texttt{asciinema} so playback worked properly in reports.}
+        \resumeItem{Led the Flutter stack delivery and added assessment support for AWS, Git, Apache, Terraform and Docker. Handled the Rails 5 to Rails 6 migration for the DevOps modules. Helped take HackerRank's \textbf{DLI to 4.3+} and improve NPS.}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {HackerRank}{Jul 2019 -- Dec 2020}
+      {Software Development Engineer}{Bengaluru, India}
+      \resumeItemListStart
+        \resumeItem{Scaled the DevOps assessment tool to handle \textbf{900\% more concurrent candidate sessions}, owning the EC2 provisioning path, the Packer machine images and logging. Moved its workers and cron jobs onto \textbf{Kubernetes}.}
+        \resumeItem{Set up the \textbf{SLA capture and monitoring system}, which became the numbers the team tracked for quality and performance, and built a script execution service used for re-scoring and running tests.}
+      \resumeItemListEnd
+
+    \EarlyCareerSection
+
+  \resumeSubHeadingListEnd
+\vspace{-10pt}
+
+\AdditionalWorkSection
+
+\EducationSection
+
+\SkillsSection{AI Engineering}{LLM gateways (LiteLLM, Portkey), Anthropic \& OpenAI APIs, agentic runtimes and coding agents, RAG, MCP, prompt engineering, guardrails, token and cost budgeting (TPM/RPM), LlamaIndex, evaluation and model drift testing}
+
+\end{document}
