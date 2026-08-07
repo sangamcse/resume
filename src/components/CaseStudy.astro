@@ -1,6 +1,6 @@
 ---
 import type { CaseStudy } from '../data/profile';
-import AdeSession from '../diagrams/AdeSession.astro';
+import AdeDelivery from '../diagrams/AdeDelivery.astro';
 import LlmGateway from '../diagrams/LlmGateway.astro';
 import SudorankConsolidation from '../diagrams/SudorankConsolidation.astro';
 
@@ -46,7 +46,7 @@ const { study, caption } = Astro.props;
       role="group"
       aria-label={`Architecture diagram: ${study.name}`}
     >
-      {study.diagram === 'ade' && <AdeSession />}
+      {study.diagram === 'delivery' && <AdeDelivery />}
       {study.diagram === 'gateway' && <LlmGateway />}
       {study.diagram === 'consolidation' && <SudorankConsolidation />}
       <figcaption>{caption}</figcaption>

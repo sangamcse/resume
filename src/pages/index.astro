@@ -14,7 +14,7 @@ import {
 } from '../data/profile';
 
 const captions: Record<string, string> = {
-  ade: 'The agent reaches the provider through the gateway, never directly.',
+  ade: 'From a CI build to a running workspace. Model routing sits outside this path.',
   'llm-gateway': 'Four features, one place that can say no.',
   consolidation: 'Two provisioning paths became one, and the other was deleted.',
 };
@@ -29,9 +29,10 @@ const year = 2026;
       <p class="eyebrow">{person.role} · {person.focus}</p>
       <h1>{site.tagline}</h1>
       <p class="lede">
-        Agent runtimes, LLM gateways and the workspace platform behind HackerRank's
-        technical assessments. Seven years of it, mostly Ruby, Go and Python on AWS, GCP
-        and Azure. I like the problems where correctness and cost are the same
+        Seven years on the workspace and runtime platform behind HackerRank's technical
+        assessments — the layer that provisions, launches and tears down the environments
+        candidates actually work in, including the agentic ones. Mostly Ruby, Go and Python
+        on AWS, GCP and Azure. I like the problems where correctness and cost are the same
         conversation.
       </p>
 

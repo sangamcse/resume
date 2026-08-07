@@ -1,0 +1,103 @@
+---
+/*
+  The ADE *delivery* path, which is the part Sangam owns: how a built server package
+  becomes a running agentic workspace.
+
+  Deliberately stops at the workspace boundary. What the agent does once it is running —
+  model routing, credentials, budgets — belongs to the AI platform team and is drawn as a
+  greyed-out box outside the scope line, so the diagram does not imply ownership it
+  does not have.
+*/
+---
+
+<svg viewBox="0 0 460 300" role="img" aria-labelledby="del-t del-d">
+  <title id="del-t">How a built ADE server package reaches a candidate workspace</title>
+  <desc id="del-d">
+    CI in the ADE repository builds a versioned server package and publishes it to Google
+    Cloud Storage along with an editor startup script. At provision time the workspace
+    service pulls that artifact, starts ADE through the IDE lifecycle, installs required
+    tools if the machine image lacks them, and gates readiness on the editor and ADE
+    setting up in parallel. The backend selects ADE as the workspace editor behind a flag,
+    and the workspace is served over the IDE ingress. Model routing and credentials sit
+    outside this path and are owned by the AI platform team.
+  </desc>
+
+  <defs>
+    <marker id="del-arrow" viewBox="0 0 10 10" refX="9" refY="5"
+      markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="var(--fg-faint)" />
+    </marker>
+  </defs>
+
+  <g font-family="var(--mono)" font-size="10" fill="var(--fg)">
+    <!-- build -->
+    <text x="8" y="14" fill="var(--fg-muted)" letter-spacing="1">BUILD &amp; RELEASE</text>
+    <rect x="8" y="22" width="128" height="46" rx="5"
+      fill="none" stroke="var(--accent)" stroke-width="1.5" />
+    <text x="72" y="40" text-anchor="middle" font-weight="600">CI · ade repo</text>
+    <text x="72" y="55" text-anchor="middle" font-size="9" fill="var(--fg-muted)">
+      versioned dev / prod
+    </text>
+
+    <path d="M136 45 L176 45" fill="none" stroke="var(--fg-faint)" marker-end="url(#del-arrow)" />
+
+    <!-- artifact store -->
+    <rect x="178" y="22" width="118" height="46" rx="5"
+      fill="var(--accent-wash)" stroke="var(--accent)" />
+    <text x="237" y="40" text-anchor="middle" font-weight="600">GCP storage</text>
+    <text x="237" y="55" text-anchor="middle" font-size="9" fill="var(--fg-muted)">
+      server pkg + startup
+    </text>
+
+    <path d="M237 68 L237 92" fill="none" stroke="var(--fg-faint)" marker-end="url(#del-arrow)" />
+
+    <!-- workspace service -->
+    <text x="8" y="86" fill="var(--fg-muted)" letter-spacing="1">PROVISION</text>
+    <rect x="120" y="92" width="234" height="58" rx="5"
+      fill="none" stroke="var(--fg)" stroke-width="1.5" />
+    <text x="237" y="110" text-anchor="middle" font-weight="600">workspace service</text>
+    <text x="237" y="124" text-anchor="middle" font-size="9" fill="var(--fg-muted)">
+      starts ADE via the IDE lifecycle
+    </text>
+    <text x="237" y="138" text-anchor="middle" font-size="9" fill="var(--fg-muted)">
+      installs tmux · ripgrep · fd if absent
+    </text>
+
+    <!-- editor selection feeds in -->
+    <rect x="366" y="99" width="86" height="44" rx="4"
+      fill="none" stroke="var(--rule)" />
+    <text x="409" y="116" text-anchor="middle" font-size="9" fill="var(--fg-muted)">backend</text>
+    <text x="409" y="129" text-anchor="middle" font-size="9" fill="var(--fg-muted)">
+      selects editor
+    </text>
+    <path d="M366 121 L356 121" fill="none" stroke="var(--fg-faint)"
+      marker-end="url(#del-arrow)" />
+
+    <path d="M237 150 L237 172" fill="none" stroke="var(--fg-faint)" marker-end="url(#del-arrow)" />
+
+    <!-- workspace -->
+    <rect x="88" y="172" width="298" height="58" rx="5"
+      fill="var(--accent-wash)" stroke="var(--accent)" stroke-width="1.5" />
+    <text x="102" y="190" font-size="9" fill="var(--fg-muted)" letter-spacing="1">
+      CANDIDATE WORKSPACE
+    </text>
+    <g stroke="var(--rule)" fill="var(--bg)">
+      <rect x="104" y="198" width="126" height="22" rx="3" />
+      <rect x="244" y="198" width="126" height="22" rx="3" />
+    </g>
+    <text x="167" y="213" text-anchor="middle">editor</text>
+    <text x="307" y="213" text-anchor="middle">ADE server</text>
+    <text x="237" y="245" text-anchor="middle" font-size="9" fill="var(--accent)">
+      readiness gated on both setting up in parallel
+    </text>
+
+    <!-- scope line -->
+    <line x1="8" y1="262" x2="452" y2="262" stroke="var(--rule)" stroke-dasharray="3 3" />
+    <text x="8" y="276" font-size="9" fill="var(--fg-faint)">
+      beyond this line: model routing, budgets and credentials
+    </text>
+    <text x="8" y="288" font-size="9" fill="var(--fg-faint)">
+      owned by the AI platform team
+    </text>
+  </g>
+</svg>

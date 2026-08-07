@@ -9,12 +9,12 @@
 
 \begin{document}
 
-\HeaderBlock{AI Platform Engineer \textbar{} Agent Runtimes, LLM Gateways \& Production AI Systems}
+\HeaderBlock{AI Platform Engineer \textbar{} LLM Gateways, Agent Infrastructure \& Production AI Systems}
 
 \hrulefill
 \vspace{-5pt}
 \resumeItemListStart
-    \resumeSubItem{Engineer who builds the infrastructure AI products sit on, the \textbf{agent runtimes, LLM gateways and cost controls}, and also ships the AI features that run on top of it.}
+    \resumeSubItem{Engineer who builds the infrastructure AI products sit on, the \textbf{LLM gateways, cost controls and the runtime our agentic workspaces ship through}, and who has also taken AI features from nothing to GA on top of it.}
     \resumeSubItem{\textbf{Over 7 years} of backend and distributed systems work in Ruby, Go and Python across AWS, GCP and Azure, so the AI systems I build are ones I can also run, debug and keep within budget.}
     \resumeSubItem{Open to relocation and remote roles across APAC and EMEA.}
  \resumeItemListEnd
@@ -31,8 +31,8 @@
       {HackerRank}{Jul 2022 -- Present}
       {Senior Software Engineer}{Bengaluru, India}
       \resumeItemListStart
-        \resumeItem{Led the launch of ADE, our agentic development environment, where a candidate gets an editor, a terminal and an agent chat in one workspace, with a coding agent running against the \textbf{Anthropic API} through our LLM gateway. Owned the agent server lifecycle, the ingress, \textbf{minting a fresh credential per session}, tool provisioning and versioned deployments, across four repositories.}
         \resumeItem{Brought in \textbf{LiteLLM} as our LLM proxy and added \textbf{per-tenant budget, TPM and RPM limits} on top of it, so one team or feature could not eat into everyone else's quota. Later added \textbf{Portkey} metadata to the requests so spend could be attributed per feature, and tightened up its release pipeline. Also wrote scripts that deliberately try to exhaust a budget, to confirm the limits actually hold.}
+        \resumeItem{Lead the \textbf{workspace infrastructure side of ADE}, our agentic development environment: how the ADE server package is built, released and delivered into a candidate's workspace. Built the CI flow publishing versioned packages to GCP storage, wired the workspace service to start ADE through the existing IDE lifecycle, and gated readiness on the editor and ADE setting up in parallel. The agent and model-routing layer is owned by our AI platform team.}
         \resumeItem{Designed and launched the \textbf{Prompt Engineering} question type from nothing to GA, covering the backend, question creation, the candidate experience, the checker programs and localisation. Followed it with the \textbf{RAG} and \textbf{Agent} modules built in Python with OpenAI and LlamaIndex, along with an OpenAI tool runtime and GPU-backed images.}
         \resumeItem{Keep the AI assessments working as models move on. Upgraded the environments to newer OpenAI model versions and re-validated the RAG questions against them, since a question that scores correctly on one model does not always behave the same way on the next one.}
         \resumeItem{Shipped the in-workspace AI assistant along with the Copilot and Continue integrations, gated to customers on the AI add-on. Wrote the RCA when the assistant turned itself on for a question type it was not meant for, and fixed the flag handling behind it.}

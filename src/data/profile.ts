@@ -13,9 +13,9 @@ export const site = {
   title: 'Sangam Kumar — AI Platform & Infrastructure Engineer',
   tagline: 'I build the infrastructure AI products run on.',
   description:
-    'Senior software engineer, seven years building agent runtimes, LLM gateways and ' +
-    "the workspace platform behind HackerRank's technical assessments. Ruby, Go and " +
-    'Python on AWS, GCP and Azure.',
+    'Senior software engineer, seven years on the workspace and runtime platform behind ' +
+    "HackerRank's technical assessments, plus the LLM proxy its AI features run through. " +
+    'Ruby, Go and Python on AWS, GCP and Azure.',
 } as const;
 
 export const person = {
@@ -56,39 +56,42 @@ export type CaseStudy = {
   problem: string;
   approach: string[];
   outcome: string;
-  diagram: 'ade' | 'gateway' | 'consolidation';
+  diagram: 'delivery' | 'gateway' | 'consolidation';
 };
 
 export const caseStudies: CaseStudy[] = [
   {
     id: 'ade',
-    name: 'ADE — Agentic Development Environment',
-    kicker: 'Giving candidates an agent, without giving away the budget.',
-    stack: ['Ruby on Rails', 'Go', 'Kubernetes', 'Anthropic API', 'LiteLLM'],
+    name: 'Shipping an agentic dev environment into every workspace',
+    kicker:
+      'I lead the workspace infrastructure side of ADE: the path from a built server ' +
+      'package to a running agentic workspace.',
+    stack: ['Go', 'Ruby on Rails', 'Kubernetes', 'GCP Storage', 'CI/CD'],
     problem:
-      'Technical assessment assumed a solo human in an editor. That is no longer how ' +
-      'engineers work — there is an agent in the loop. Assessing that means handing a ' +
-      'candidate a real coding agent inside a locked-down workspace, which raises two ' +
-      'awkward questions at once: how do you keep the session contained, and what stops ' +
-      'one candidate burning a month of API budget in twenty minutes?',
+      'ADE — our agentic development environment — is a server and a client application ' +
+      'built by another team. Something still has to get that server into thousands of ' +
+      'ephemeral candidate workspaces, on the right version, with the tools it depends on ' +
+      'present, and without candidates watching a loading spinner while it sorts itself ' +
+      'out. That delivery and runtime path is the part I own.',
     approach: [
-      'Led the launch across four services — the Rails monolith, workspace service, ADE ' +
-        'server and interview frontend — keeping every change backward compatible so it ' +
-        'could roll out in stages rather than as one cutover.',
-      'Pointed the coding agent at the Anthropic API through our own LLM gateway rather ' +
-        'than directly, so per-tenant budgets and rate limits apply to candidate traffic ' +
-        'like any other consumer.',
-      'Minted a fresh credential per session, so a session cannot outlive its own scope ' +
-        'or spend past its own ceiling.',
-      'Moved ADE onto its own ingress, and gated backend readiness on the editor and the ' +
-        'agent setting up in parallel instead of one after the other.',
+      'Built the release flow for the ADE server package: versioned dev and production ' +
+        'deployments out of CI, publishing the package and its editor startup script to ' +
+        'GCP storage as the artifact workspaces pull from.',
+      'Wired the workspace service to start ADE through the existing IDE lifecycle rather ' +
+        'than as a parallel special case, so it inherits the provisioning, health and ' +
+        'teardown behaviour every other editor already has.',
+      'Gated backend readiness on the editor and ADE setting up in parallel instead of one ' +
+        'after the other, which is where the startup wait was actually going.',
+      'Made the workspace install the tools ADE needs (tmux, ripgrep, fd) when the machine ' +
+        'image predates them, so an older environment degrades to slower rather than broken.',
+      'Moved ADE onto the IDE ingress, added editor selection behind a company flag, and ' +
+        'built the dashboards used to watch setup failures and slow loads after launch.',
     ],
     outcome:
-      'Live for candidates. The parallel-setup change removed the dead time candidates ' +
-      'used to spend watching a loading state before they could type anything, and ' +
-      'versioned deployments meant the agent could be updated without touching the ' +
-      'workspace lifecycle around it.',
-    diagram: 'ade',
+      'ADE reaches candidate workspaces as a versioned, monitored artifact on the same ' +
+      'lifecycle as every other editor, and the agent team can ship a new server build ' +
+      'without touching workspace provisioning.',
+    diagram: 'delivery',
   },
   {
     id: 'llm-gateway',
@@ -111,9 +114,9 @@ export const caseStudies: CaseStudy[] = [
         'seen refuse a request is not a limit yet.',
     ],
     outcome:
-      'Every AI-backed feature now routes through a single governed path with per-feature ' +
-      'cost attribution, and the agent sessions from ADE inherit that governance for free ' +
-      'rather than needing their own.',
+      'Every AI-backed feature that adopted the proxy now reaches providers through a ' +
+      'single governed path, with limits enforced per tenant and spend attributable to the ' +
+      'feature that caused it.',
     diagram: 'gateway',
   },
   {
@@ -272,7 +275,7 @@ export const roles: Role[] = [
     period: 'Jul 2022 — Present',
     location: 'Bengaluru, India',
     note:
-      'Agent runtimes, LLM gateways and the workspace platform. Main reviewer for the ' +
+      'The workspace and runtime platform, plus the LLM proxy. Main reviewer for the ' +
       'platform, on the system design interview panel, and author of the RFCs and RCAs ' +
       'behind most of the work above.',
   },
