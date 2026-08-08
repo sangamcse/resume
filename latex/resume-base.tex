@@ -48,16 +48,40 @@
 \renewcommand{\headrulewidth}{0pt}
 \renewcommand{\footrulewidth}{0pt}
 
-% Margins (previously supplied by fullpage, now explicit so the package is not needed)
-\setlength{\oddsidemargin}{-0.6in}
-\setlength{\evensidemargin}{-0.6in}
-\setlength{\textwidth}{7.7in}
-\setlength{\topmargin}{-0.8in}
-\setlength{\textheight}{10.4in}
+%-------------------------------------------------------------------------------
+% Margins — one knob, everything else derived.
+%
+% LaTeX measures \oddsidemargin and \topmargin from a 1in inset, not from the paper
+% edge, which makes hand-picked values quietly asymmetric. Deriving all four sides from
+% a single length keeps them equal by construction:
+%
+%   left   = 1in + \oddsidemargin
+%   right  = \paperwidth  - left - \textwidth
+%   top    = 1in + \topmargin + \headheight + \headsep
+%   bottom = \paperheight - top  - \textheight
+%
+% Change \resumemargin alone; do not set the others by hand.
+%-------------------------------------------------------------------------------
+\newlength{\resumemargin}
+\setlength{\resumemargin}{0.45in}
+
 \setlength{\headheight}{0pt}
 \setlength{\headsep}{0pt}
 \setlength{\footskip}{0pt}
 \setlength{\parindent}{0pt}
+
+\setlength{\oddsidemargin}{\resumemargin}
+\addtolength{\oddsidemargin}{-1in}
+\setlength{\evensidemargin}{\oddsidemargin}
+
+\setlength{\topmargin}{\resumemargin}
+\addtolength{\topmargin}{-1in}
+
+\setlength{\textwidth}{\paperwidth}
+\addtolength{\textwidth}{-2\resumemargin}
+
+\setlength{\textheight}{\paperheight}
+\addtolength{\textheight}{-2\resumemargin}
 
 \urlstyle{same}
 \raggedbottom
