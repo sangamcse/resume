@@ -421,7 +421,9 @@ section { padding-block: var(--step); }
 }
 
 @container (min-width: 48rem) {
-  .entry { grid-template-columns: 15rem 1fr; }
+  /* align-items: baseline for the same reason as .skills — the label is 17px and the
+     body 15px, so equal box tops leave the text a few px out of line. */
+  .entry { grid-template-columns: 15rem 1fr; align-items: baseline; }
 }
 
 .entry h3 {
@@ -472,7 +474,7 @@ section { padding-block: var(--step); }
 }
 
 @container (min-width: 48rem) {
-  .role { grid-template-columns: 15rem 1fr; }
+  .role { grid-template-columns: 15rem 1fr; align-items: baseline; }
 }
 
 .role .period {
@@ -487,12 +489,26 @@ section { padding-block: var(--step); }
 
 /* ---------- skills ---------- */
 
-.skills { display: grid; gap: 1.75rem; }
+.skills { display: grid; gap: 1.5rem; }
 
 @container (min-width: 48rem) {
-  .skills { grid-template-columns: 15rem 1fr; gap: 1.25rem 2rem; }
-  .skills > h3 { grid-column: 1; margin: 0; }
-  .skills > ul { grid-column: 2; }
+  .skills {
+    /* 11rem, not 15rem: the longest label is ~120px, so a wider gutter just opened a
+       void between each label and its own values. */
+    grid-template-columns: 11rem 1fr;
+    gap: 1rem 2rem;
+
+    /* The label is 13px monospace and the values are 15px sans, so matching their box
+       tops still left the text visibly out of line. Aligning first baselines is what
+       actually makes a label read as belonging to the row beside it. */
+    align-items: baseline;
+  }
+
+  .skills > h3 { grid-column: 1; }
+
+  /* The top margin below is for the stacked layout, where the list sits under its
+     label. In two columns it just pushes the values below the label's baseline. */
+  .skills > ul { grid-column: 2; margin-top: 0; }
 }
 
 .skills h3 {
