@@ -11,6 +11,7 @@ import {
   roles,
   skills,
   education,
+  path,
 } from '../data/profile';
 
 const captions: Record<string, string> = {
@@ -187,8 +188,8 @@ const year = 2026;
       <div class="meta">
         <span>© {year} {person.name} · {person.location}</span>
         <span class="machine">
-          <a href="/resume.json">resume.json</a>
-          <a href="/llms.txt">llms.txt</a>
+          <a href={path("resume.json")}>resume.json</a>
+          <a href={path("llms.txt")}>llms.txt</a>
         </span>
       </div>
     </div>

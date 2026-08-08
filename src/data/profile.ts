@@ -8,8 +8,24 @@
  * Every number here is measured, not estimated. See the notes on `stats`.
  */
 
+/**
+ * Build every internal link through this, never as a bare "/foo".
+ *
+ * Astro rewrites its own asset URLs when `base` is set, but not hand-written hrefs, so a
+ * root-absolute "/resume.json" silently 404s on a project-pages subpath. BASE_URL is
+ * "/resume/" today and "/" at the apex domain, so this stays correct through the move.
+ */
+// BASE_URL has no trailing slash when `base` is set ("/resume") and is "/" at the apex, so
+// normalise both ends and rejoin with exactly one slash. Raw concatenation produced
+// "/resumefavicon.ico".
+const BASE = import.meta.env.BASE_URL.replace(/\/+$/, '');
+export const path = (p = '') => `${BASE}/${p.replace(/^\/+/, '')}`;
+
+/** Origin + base, e.g. https://sangamcse.github.io/resume — canonical, OG and JSON-LD. */
+const ORIGIN = `${(import.meta.env.SITE ?? '').replace(/\/+$/, '')}${BASE}`;
+
 export const site = {
-  url: 'https://sangam.dev',
+  url: ORIGIN,
   title: 'Sangam Kumar — AI Platform & Infrastructure Engineer',
   tagline: 'I build the infrastructure AI products run on.',
   description:
@@ -30,8 +46,8 @@ export const person = {
     linkedin: 'https://linkedin.com/in/sangamcse',
   },
   resumes: [
-    { label: 'Senior / Lead Engineer', href: '/latex/SANGAM_KUMAR_SWE.pdf' },
-    { label: 'AI Engineer', href: '/latex/SANGAM_KUMAR_AI_ENGINEER.pdf' },
+    { label: 'Senior / Lead Engineer', href: path('latex/SANGAM_KUMAR_SWE.pdf') },
+    { label: 'AI Engineer', href: path('latex/SANGAM_KUMAR_AI_ENGINEER.pdf') },
   ],
 } as const;
 

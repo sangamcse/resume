@@ -1,6 +1,6 @@
 ---
 import '../styles/global.css';
-import { site, person, caseStudies, skills } from '../data/profile';
+import { site, person, caseStudies, skills, path } from '../data/profile';
 
 // JSON-LD so AI screeners and search extract roles, skills and systems structurally
 // rather than inferring them from prose. Each case study is a CreativeWork the Person
@@ -52,7 +52,7 @@ const jsonLd = {
     <title>{site.title}</title>
     <meta name="description" content={site.description} />
     <link rel="canonical" href={site.url} />
-    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" href={path("favicon.ico")} sizes="any" />
 
     <meta property="og:type" content="profile" />
     <meta property="og:title" content={site.title} />
@@ -65,8 +65,8 @@ const jsonLd = {
     <meta name="twitter:image" content={`${site.url}/og.png`} />
 
     <!-- Machine-readable siblings of this page, discoverable rather than guessed at. -->
-    <link rel="alternate" type="application/json" href="/resume.json" title="JSON Resume" />
-    <link rel="alternate" type="text/markdown" href="/llms.txt" title="Summary for LLMs" />
+    <link rel="alternate" type="application/json" href={path("resume.json")} title="JSON Resume" />
+    <link rel="alternate" type="text/markdown" href={path("llms.txt")} title="Summary for LLMs" />
 
     <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
 
@@ -89,7 +89,7 @@ const jsonLd = {
 
     <header class="masthead">
       <div class="shell">
-        <a class="wordmark" href="/">Sangam Kumar</a>
+        <a class="wordmark" href={path()}>Sangam Kumar</a>
         <nav aria-label="Sections">
           <a href="#work">Work</a>
           <a href="#open-source">Open source</a>

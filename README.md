@@ -52,9 +52,36 @@ The `robots.txt` posture is intentional. A portfolio exists to be found.
 Pushing to `master` triggers `.github/workflows/deploy.yml`, which builds and publishes to
 GitHub Pages.
 
-This needs the repository's **Settings → Pages → Source** set to **GitHub Actions**. The
-default Pages build only runs Jekyll and cannot build Astro, so the deploy step fails until
-that is switched.
+Pages must be in **Actions** mode, not legacy branch mode. In legacy mode GitHub runs its
+own Jekyll build instead — which fails on this repo, and ignores the artifact this workflow
+uploads:
+
+```bash
+gh api --method PUT repos/sangamcse/resume/pages -f build_type=workflow
+```
+
+Currently served at **https://sangamcse.github.io/resume/**.
+
+### Moving to the apex domain
+
+All URLs derive from `astro.config.mjs`, so there are no path edits anywhere:
+
+1. In `astro.config.mjs`, set `site: 'https://sangam.dev'` and `base: '/'`.
+2. Recreate `public/CNAME` containing `sangam.dev` (see `public/` notes below for why it is
+   absent while on the subpath).
+3. At the DNS provider, point the apex at GitHub Pages:
+   `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`,
+   and `www` as a `CNAME` to `sangamcse.github.io`.
+4. Set the domain on the repo:
+   `gh api --method PUT repos/sangamcse/resume/pages -f cname=sangam.dev`
+5. Enable **Enforce HTTPS** once GitHub has issued the certificate.
+
+Note that whatever currently serves `www.sangam.dev` stops being served at that point.
+
+**No `CNAME` in `public/`, deliberately.** GitHub Pages reads `CNAME` out of the deployed
+artifact and sets the custom domain from it. While the site is on the project subpath that
+would point the domain at a site whose DNS is not ready and take it offline. It comes back
+in step 2 above.
 
 ## Design notes
 
